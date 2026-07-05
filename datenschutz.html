@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Datenschutz · Tomodachi — personalisierte Kinderbücher</title>
+<meta name="description" content="Datenschutzerklärung zum Tomodachi-Quick-Check — eine rein statische Seite: Auswertung im Browser, kein Server-Backend, keine Cookies, kein Tracking.">
+<style>
+:root{
+  --font-display:"Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --paper:#faf6ee; --surface:#ffffff; --surface-2:#fcfaf5; --paper-soft:#f4eee1;
+  --ink:#1d1c17; --body:#45433c; --body-strong:#2c2a24; --muted:#78756b;
+  --brand:#204e45; --brand-ink:#2c6355; --line:#e6dfd1;
+  --accent:#e0a03a; --accent-soft:#fbebcb; --accent-ink:#93650f;
+  --gruen:#4e8a6b; --gruen-soft:#dcebe2; --gruen-text:#2f6349;
+  --r-sm:10px; --r-md:14px; --r-lg:20px;
+  --shadow-sm:0 1px 2px rgba(29,28,23,.04),0 2px 6px rgba(29,28,23,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--body);line-height:1.65;font-size:16px;
+  -webkit-font-smoothing:antialiased;font-family:var(--font-body)}
+.wrap{max-width:720px;margin:0 auto;padding:36px 24px 72px;position:relative}
+a{color:var(--brand-ink);text-underline-offset:2px}
+a:hover{color:var(--brand)}
+h1,h2{font-family:var(--font-display);color:var(--ink);line-height:1.1;letter-spacing:-.5px;font-weight:600}
+h1{font-size:clamp(1.9rem,5vw,2.5rem);margin:0 0 .3em;letter-spacing:-1px}
+h2{font-size:1.3rem;margin:1.9em 0 .4em}
+p{margin:0 0 .85em}
+ul{margin:.4em 0 .9em;padding-left:1.2em}
+li{margin:.3em 0}
+.eyebrow{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--brand-ink);margin:0 0 .4em}
+.back{display:inline-flex;align-items:center;gap:6px;margin-bottom:22px;font-size:.9rem;text-decoration:none;
+  color:var(--brand-ink);font-weight:600}
+.back:hover{color:var(--brand)}
+address{font-style:normal;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:18px 22px;box-shadow:var(--shadow-sm);line-height:1.7}
+.draft{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:14px 18px;font-size:.9rem;color:var(--accent-ink);margin:20px 0}
+.pledge{background:var(--gruen-soft);border-left:3px solid var(--gruen);border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:14px 18px;font-size:.95rem;color:var(--gruen-text);margin:20px 0;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--paper-soft);color:var(--brand-ink);font-size:.72rem;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+tr:last-child td{border-bottom:none}
+.foot{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font-size:.82rem}
+.foot a{color:var(--muted);text-decoration:underline}
+.foot a:hover{color:var(--brand-ink)}
+@media (max-width:768px){
+  h1{font-size:1.7rem;overflow-wrap:break-word;word-break:break-word}
+  html,body{overflow-x:hidden}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Zurück zum Quick-Check</a>
+  <p class="eyebrow">Rechtliches · Tomodachi</p>
+  <h1>Datenschutzerklärung</h1>
+
+  <div class="draft"><strong>Arbeitsstand.</strong> Diese Erklärung beschreibt den tatsächlichen Datenfluss der Seite ehrlich; eine anwaltliche Final-Prüfung steht noch aus.</div>
+
+  <h2>1. Verantwortlicher</h2>
+  <address>
+    Jay Manuzon · Vantum<br>
+    Mohnweg 75, 51371 Leverkusen, Deutschland<br>
+    E-Mail: <a href="mailto:jay@aivantum.com">jay@aivantum.com</a>
+  </address>
+
+  <h2>2. Das Wichtigste zuerst</h2>
+  <div class="pledge">Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was du selbst per E-Mail schickst.</div>
+  <p>Der Tomodachi-Quick-Check ist eine <strong>rein statische Seite</strong>: Sie besteht aus einer einzelnen HTML-Datei ohne eigenes Server-Backend. Eure Antworten und Angaben werden ausschließlich <strong>in eurem Browser</strong> zu einer Buch-Empfehlung und einem Bestell-Code verarbeitet. Die Seite</p>
+  <ul>
+    <li>setzt <strong>keine Cookies</strong> und nutzt keinen localStorage,</li>
+    <li>bindet <strong>kein Tracking</strong>, keine Analyse-Dienste und keine externen Schriften oder Skripte ein,</li>
+    <li>hat <strong>kein Formular</strong>, das Daten an uns übermittelt, und keine Newsletter-Anmeldung,</li>
+    <li>überträgt von sich aus <strong>nichts</strong> — auch der Bestell-Code wird nur angezeigt, nie gesendet.</li>
+  </ul>
+  <p>Gerade weil es um Angaben zu einem Kind geht, ist die Seite bewusst so gebaut, dass sie nichts sammeln <em>kann</em>.</p>
+
+  <h2>3. Hosting (GitHub Pages)</h2>
+  <p>Die Seite wird über <strong>GitHub Pages</strong> (GitHub, Inc.) bereitgestellt; die Domain wird über Cloudflare, Inc. aufgelöst. Beim Aufruf der Seite verarbeitet der Hosting-Anbieter technisch notwendig kurzzeitig eure IP-Adresse, um die Seite auszuliefern und Missbrauch abzuwehren (Server-Logs; Rechtsgrundlage Art. 6 Abs. 1 lit. f DSGVO — berechtigtes Interesse am sicheren Betrieb). Auf diese Protokolle haben wir keinen inhaltlichen Zugriff; wir erhalten daraus keine Auswertungen über euch.</p>
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+  <table>
+    <tr><th>Dienst</th><th>Wofür</th><th>Ort / Grundlage</th></tr>
+    <tr><td>Cloudflare, Inc. &amp; GitHub, Inc. (GitHub Pages)</td><td>Bereitstellung der Seite (Hosting und Domain-Auflösung)</td><td>USA/EU-nah — Data Privacy Framework (Art. 45 DSGVO) + Auftragsverarbeitungsvertrag</td></tr>
+  </table>
+  </div>
+  <p>Eine Weitergabe von Daten an weitere Dritte findet nicht statt.</p>
+
+  <h2>4. E-Mail-Bestellung — nur wenn ihr selbst schickt</h2>
+  <p>Daten erreichen uns ausschließlich, wenn ihr sie uns <strong>selbst aktiv per E-Mail</strong> schickt — etwa den Bestell-Code über den „Per E-Mail senden"-Link (der nur euer eigenes Mail-Programm öffnet) oder durch Kopieren und Einfügen. Erst mit eurem Klick auf „Senden" in eurem Mail-Programm verlässt irgendetwas euer Gerät.</p>
+  <p>Die so übermittelten Daten (eure E-Mail-Adresse und der Inhalt eurer Nachricht, z. B. der Bestell-Code mit Vorname des Kindes, Alter, Auswahl-Angaben und ggf. Freitext) verarbeiten wir ausschließlich zur Bearbeitung eurer Bestellung, Vormerkung oder Anfrage (Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO — Vertragsanbahnung und -erfüllung). Der Bestell-Code enthält nur Summen je Thema, nie eure einzelnen Antworten. Ihr entscheidet selbst, welche Angaben ihr in die Mail aufnehmt.</p>
+
+  <h2>5. Speicherdauer</h2>
+  <p>E-Mails zu Bestellungen und Anfragen löschen wir, sobald der Vorgang abgeschlossen ist und kein weiterer Kontakt gewünscht ist — spätestens 24 Monate nach dem letzten Kontakt, soweit keine gesetzlichen Aufbewahrungspflichten (z. B. für Rechnungen) entgegenstehen. Auf Verlangen löschen wir früher.</p>
+
+  <h2>6. Eure Rechte</h2>
+  <p>Ihr habt das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Wendet euch dafür an <a href="mailto:jay@aivantum.com">jay@aivantum.com</a>. Außerdem könnt ihr euch bei einer Datenschutz-Aufsichtsbehörde beschweren; für uns zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW), Kavalleriestraße 2–4, 40213 Düsseldorf.</p>
+
+  <div class="foot">
+    <a href="index.html">Quick-Check</a> · Datenschutz · <a href="impressum.html">Impressum</a>
+  </div>
+</div>
+</body>
+</html>
