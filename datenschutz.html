@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Datenschutz · Tomodachi — personalisierte Kinderbücher</title>
-<meta name="description" content="Datenschutzerklärung zum Tomodachi-Quick-Check — eine rein statische Seite: Auswertung im Browser, kein Server-Backend, keine Cookies, kein Tracking.">
+<meta name="description" content="Datenschutzerklärung zum Tomodachi-Quick-Check — Auswertung im Browser, keine Cookies, kein Tracking; gesendet wird nur, was ihr selbst aktiv absendet (Direktversand oder eigenes Mail-Programm).">
 <style>
 :root{
   --font-display:"Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
@@ -70,13 +70,13 @@ tr:last-child td{border-bottom:none}
   </address>
 
   <h2>2. Das Wichtigste zuerst</h2>
-  <div class="pledge">Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was du selbst per E-Mail schickst.</div>
+  <div class="pledge">Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was ihr selbst aktiv absendet: per Direktversand-Button oder aus eurem eigenen Mail-Programm.</div>
   <p>Der Tomodachi-Quick-Check ist eine <strong>rein statische Seite</strong>: Sie besteht aus einer einzelnen HTML-Datei ohne eigenes Server-Backend. Eure Antworten und Angaben werden ausschließlich <strong>in eurem Browser</strong> zu einer Buch-Empfehlung und einem Bestell-Code verarbeitet. Die Seite</p>
   <ul>
     <li>setzt <strong>keine Cookies</strong> und nutzt keinen localStorage,</li>
     <li>bindet <strong>kein Tracking</strong>, keine Analyse-Dienste und keine externen Schriften oder Skripte ein,</li>
-    <li>hat <strong>kein Formular</strong>, das Daten an uns übermittelt, und keine Newsletter-Anmeldung,</li>
-    <li>überträgt von sich aus <strong>nichts</strong> — auch der Bestell-Code wird nur angezeigt, nie gesendet.</li>
+    <li>hat <strong>keine Newsletter-Anmeldung</strong> und kein Tracking-Formular — das einzige Sende-Element ist der Bestell-Code-Versand unten, den ihr selbst auslöst,</li>
+    <li>überträgt von sich aus <strong>nichts</strong> — der Bestell-Code wird nur angezeigt und erst gesendet, wenn ihr selbst auf „Direkt an uns senden" klickt oder ihn per Mail-Programm schickt.</li>
   </ul>
   <p>Gerade weil es um Angaben zu einem Kind geht, ist die Seite bewusst so gebaut, dass sie nichts sammeln <em>kann</em>.</p>
 
@@ -86,12 +86,16 @@ tr:last-child td{border-bottom:none}
   <table>
     <tr><th>Dienst</th><th>Wofür</th><th>Ort / Grundlage</th></tr>
     <tr><td>Cloudflare, Inc. &amp; GitHub, Inc. (GitHub Pages)</td><td>Bereitstellung der Seite (Hosting und Domain-Auflösung)</td><td>USA/EU-nah — Data Privacy Framework (Art. 45 DSGVO) + Auftragsverarbeitungsvertrag</td></tr>
+    <tr><td>Cloudflare, Inc. (Workers)</td><td>Übermittlung des Bestell-Codes beim Direktversand (nur auf euren Klick)</td><td>USA/EU-nah — Data Privacy Framework (Art. 45 DSGVO) + Auftragsverarbeitungsvertrag</td></tr>
+    <tr><td>Resend, Inc.</td><td>E-Mail-Zustellung beim Direktversand (Lead-Mail an uns + Bestätigung an euch)</td><td>USA — Data Privacy Framework (Art. 45 DSGVO) + Auftragsverarbeitungsvertrag</td></tr>
   </table>
   </div>
   <p>Eine Weitergabe von Daten an weitere Dritte findet nicht statt.</p>
 
-  <h2>4. E-Mail-Bestellung — nur wenn ihr selbst schickt</h2>
-  <p>Daten erreichen uns ausschließlich, wenn ihr sie uns <strong>selbst aktiv per E-Mail</strong> schickt — etwa den Bestell-Code über den „Per E-Mail senden"-Link (der nur euer eigenes Mail-Programm öffnet) oder durch Kopieren und Einfügen. Erst mit eurem Klick auf „Senden" in eurem Mail-Programm verlässt irgendetwas euer Gerät.</p>
+  <h2>4. Bestellung — nur wenn ihr selbst sendet</h2>
+  <p>Daten erreichen uns ausschließlich, wenn ihr sie <strong>selbst aktiv absendet</strong>. Dafür gibt es zwei Wege:</p>
+  <p><strong>a) Direktversand („Direkt an uns senden"):</strong> Mit eurem Klick übermittelt die Seite eure E-Mail-Adresse und den Bestell-Code an unseren Übermittlungsdienst (Cloudflare Workers) und dieser stellt beides als E-Mail an uns zu; ihr erhaltet zugleich eine Bestätigungs-Mail an die angegebene Adresse. Für den E-Mail-Versand nutzen wir <strong>Resend</strong> (Resend, Inc., USA — Data Privacy Framework, Auftragsverarbeitung). Die Daten werden dabei nur zur Zustellung verarbeitet und nicht darüber hinaus auf dem Übermittlungsweg gespeichert; zur Missbrauchs-Abwehr gilt eine kurzlebige Anfragen-Begrenzung je IP-Adresse. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).</p>
+  <p><strong>b) Eigenes Mail-Programm:</strong> Der Link „Per eigenem Mail-Programm" öffnet nur euren Mail-Entwurf — erst mit eurem Klick auf „Senden" dort verlässt etwas euer Gerät.</p>
   <p>Die so übermittelten Daten (eure E-Mail-Adresse und der Inhalt eurer Nachricht, z. B. der Bestell-Code mit Vorname des Kindes, Alter, Auswahl-Angaben und ggf. Freitext) verarbeiten wir ausschließlich zur Bearbeitung eurer Bestellung, Vormerkung oder Anfrage (Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO — Vertragsanbahnung und -erfüllung). Der Bestell-Code enthält nur Summen je Thema, nie eure einzelnen Antworten. Ihr entscheidet selbst, welche Angaben ihr in die Mail aufnehmt.</p>
 
   <h2>5. Speicherdauer</h2>

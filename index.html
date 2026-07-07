@@ -585,14 +585,20 @@ img,svg{max-width:100%}
 
       <div class="card">
         <h3>Euer Bestell-Code</h3>
-        <p>Alles, was wir für euer Buch brauchen, zusammengefasst — <strong>er wurde nicht gesendet.</strong> Schickt ihn per E-Mail an <a href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code">jay@aivantum.com</a>, wenn ihr bestellen oder vormerken möchtet — mit dem Button unten oder kopiert in eurem eigenen Mail-Programm. So behaltet ihr selbst in der Hand, was ihr teilt.</p>
+        <p>Alles, was wir für euer Buch brauchen, zusammengefasst — <strong>er wurde noch nicht gesendet.</strong> Wenn ihr bestellen oder vormerken möchtet: tragt unten eure E-Mail-Adresse ein und sendet den Code direkt an uns — oder nutzt weiterhin euer eigenes Mail-Programm (<a href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code">jay@aivantum.com</a>). So behaltet ihr selbst in der Hand, was ihr teilt.</p>
         <textarea id="code-out" readonly spellcheck="false" aria-label="Bestell-Code (JSON)"></textarea>
+        <div class="direct-send" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
+          <input type="email" id="send-email" inputmode="email" autocomplete="email" placeholder="eure@email.de" aria-label="Eure E-Mail-Adresse für die Bestellung" style="flex:1 1 220px;min-width:0;padding:10px 14px;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface);font:inherit">
+          <input type="text" id="send-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <button type="button" class="btn" id="send-btn">Direkt an uns senden</button>
+        </div>
+        <p id="send-status" hidden style="margin-top:10px;font-weight:600"></p>
         <div class="code-actions">
-          <a class="btn" id="mail-btn" href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per E-Mail senden</a>
+          <a class="btn ghost" id="mail-btn" href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
           <button type="button" class="btn ghost" id="copy-btn">Bestell-Code kopieren</button>
           <span id="copy-ok">Kopiert ✓</span>
         </div>
-        <p style="margin-top:12px"><small>„Per E-Mail senden" öffnet euer eigenes Mail-Programm mit dem Code im Entwurf — gesendet wird erst, wenn ihr dort auf Senden drückt. Der Code enthält nur Summen je Thema (nicht eure einzelnen Antworten), eure Auswahl und — falls ausgefüllt — den Freitext.</small></p>
+        <p style="margin-top:12px"><small>„Direkt an uns senden" schickt den Code über unseren Server an uns — ihr bekommt sofort eine Bestätigung an eure Adresse. „Per eigenem Mail-Programm" öffnet stattdessen euren Mail-Entwurf; gesendet wird dort erst, wenn ihr auf Senden drückt. Der Code enthält nur Summen je Thema (nicht eure einzelnen Antworten), eure Auswahl und — falls ausgefüllt — den Freitext. Details: <a href="datenschutz.html">Datenschutz</a>.</small></p>
       </div>
     </div>
 
@@ -828,6 +834,52 @@ img,svg{max-width:100%}
     document.getElementById("ergebnis-live").hidden = false;
     document.getElementById("ergebnis").scrollIntoView({ behavior: "smooth" });
   }
+
+  // ---- Direkt-Senden (Worker-Variante, 2026-07-07) ----
+  // Schickt den Bestell-Code ueber den aivantum-Worker (Resend-Mail-Relay) an uns
+  // und bestaetigt der Familie sofort per Mail. Mailto bleibt als eigener Weg bestehen.
+  document.getElementById("send-btn").addEventListener("click", function(){
+    var btn = this;
+    var email = (document.getElementById("send-email").value || "").trim();
+    var status = document.getElementById("send-status");
+    var code = document.getElementById("code-out").value || "";
+    var show = function(msg, ok){
+      status.hidden = false;
+      status.textContent = msg;
+      status.style.color = ok ? "#2c6355" : "#b3422a";
+    };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      show("Bitte gebt eine g\u00fcltige E-Mail-Adresse ein \u2014 an sie schicken wir die Best\u00e4tigung.", false);
+      return;
+    }
+    if (!code.trim()){
+      show("Der Bestell-Code ist noch leer \u2014 bitte erst den Fragebogen oben ausf\u00fcllen.", false);
+      return;
+    }
+    btn.disabled = true; btn.textContent = "Wird gesendet \u2026";
+    fetch("https://aivantum-check.aivantum.workers.dev/kontakt", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        art: "tomodachi",
+        email: email,
+        code: code,
+        source: location.host + location.pathname,
+        website: document.getElementById("send-website").value
+      })
+    }).then(function(r){
+      if (r.ok){
+        btn.textContent = "Gesendet \u2713";
+        show("Angekommen! Eine Best\u00e4tigung ist unterwegs an " + email + ". Wir melden uns pers\u00f6nlich bei euch.", true);
+      } else {
+        btn.disabled = false; btn.textContent = "Direkt an uns senden";
+        show("Das hat gerade nicht geklappt. Nutzt bitte den Mail-Programm-Weg oder kopiert den Code.", false);
+      }
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = "Direkt an uns senden";
+      show("Keine Verbindung. Nutzt bitte den Mail-Programm-Weg oder kopiert den Code.", false);
+    });
+  });
 
   // ---- Copy-Button ----
   document.getElementById("copy-btn").addEventListener("click", function(){
