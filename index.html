@@ -565,7 +565,7 @@ img,svg{max-width:100%}
     <h2>Eure Empfehlung</h2>
 
     <p class="no-js-note callout">
-      <strong>Ohne JavaScript</strong> wird hier keine berechnete Empfehlung angezeigt — der Fragebogen oben bleibt vollständig lesbar. Aktiviere JavaScript, um die Buch-Empfehlung, die Übersicht über alle fünf Themen und den Bestell-Code zu sehen. Es wird auch mit JavaScript nichts gesendet: Die Auswertung läuft komplett in deinem Browser. Bestellen oder vormerken könnt ihr jederzeit auch direkt per E-Mail an <a href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code">jay@aivantum.com</a> — schreibt uns einfach, welches Buch euch interessiert.
+      <strong>Ohne JavaScript</strong> wird hier keine berechnete Empfehlung angezeigt — der Fragebogen oben bleibt vollständig lesbar. Aktiviere JavaScript, um die Buch-Empfehlung, die Übersicht über alle fünf Themen und den Bestell-Code zu sehen. Es wird auch mit JavaScript nichts gesendet: Die Auswertung läuft komplett in deinem Browser. Bestellen oder vormerken könnt ihr jederzeit auch direkt per E-Mail an <a href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay">jay@aivantum.com</a> — schreibt uns einfach, welches Buch euch interessiert.
     </p>
 
     <div class="js-only" id="ergebnis-live" hidden>
@@ -585,7 +585,7 @@ img,svg{max-width:100%}
 
       <div class="card">
         <h3>Euer Bestell-Code</h3>
-        <p>Alles, was wir für euer Buch brauchen, zusammengefasst — <strong>er wurde noch nicht gesendet.</strong> Wenn ihr bestellen oder vormerken möchtet: tragt unten eure E-Mail-Adresse ein und sendet den Code direkt an uns — oder nutzt weiterhin euer eigenes Mail-Programm (<a href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code">jay@aivantum.com</a>). So behaltet ihr selbst in der Hand, was ihr teilt.</p>
+        <p>Alles, was wir für euer Buch brauchen, zusammengefasst — <strong>er wurde noch nicht gesendet.</strong> Wenn ihr bestellen oder vormerken möchtet: tragt unten eure E-Mail-Adresse ein und sendet den Code direkt an uns — oder nutzt weiterhin euer eigenes Mail-Programm (<a href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay">jay@aivantum.com</a>). So behaltet ihr selbst in der Hand, was ihr teilt.</p>
         <textarea id="code-out" readonly spellcheck="false" aria-label="Bestell-Code (JSON)"></textarea>
         <div class="direct-send" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
           <input type="email" id="send-email" inputmode="email" autocomplete="email" placeholder="eure@email.de" aria-label="Eure E-Mail-Adresse für die Bestellung" style="flex:1 1 220px;min-width:0;padding:10px 14px;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface);font:inherit">
@@ -594,7 +594,7 @@ img,svg{max-width:100%}
         </div>
         <p id="send-status" hidden style="margin-top:10px;font-weight:600"></p>
         <div class="code-actions">
-          <a class="btn ghost" id="mail-btn" href="mailto:jay@aivantum.com?subject=Tomodachi%20Bestell-Code&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
+          <a class="btn ghost" id="mail-btn" href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
           <button type="button" class="btn ghost" id="copy-btn">Bestell-Code kopieren</button>
           <span id="copy-ok">Kopiert ✓</span>
         </div>
@@ -827,7 +827,7 @@ img,svg{max-width:100%}
     // ohne JS trägt der Link bereits Adresse, Betreff und einen Einfüge-Platzhalter).
     var mailBtn = document.getElementById("mail-btn");
     if (mailBtn){
-      mailBtn.href = "mailto:jay@aivantum.com?subject=" + encodeURIComponent("Tomodachi Bestell-Code") +
+      mailBtn.href = "mailto:jay@aivantum.com?subject=" + encodeURIComponent("Bestell-Code · Du bist okay") +
         "&body=" + encodeURIComponent("Hallo,\n\nwir möchten bestellen bzw. vormerken. Hier ist unser Bestell-Code:\n\n" + codeText + "\n\nViele Grüße");
     }
 
