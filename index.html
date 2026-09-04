@@ -281,7 +281,7 @@ img,svg{max-width:100%}
     <div class="privacy-pledge">
       <span class="lock" aria-hidden="true">🔒</span>
       <span><b>Alle Antworten bleiben auf deinem Gerät.</b>
-      Diese Seite hat keinen Server, setzt keine Cookies und sendet nichts. Erst wenn du am Ende den Bestell-Code selbst kopierst und verschickst, verlässt irgendetwas deinen Browser. Bei Fragen zu einem Kind ist das für uns keine Fußnote, sondern die Grundlage.</span>
+      Diese Seite setzt keine Cookies und sendet von sich aus nichts. Erst wenn ihr am Ende den Bestell-Code selbst verschickt — über euer eigenes Mail-Programm oder, nach eurer Einwilligung, über unseren Direkt-Senden-Knopf — verlässt etwas euren Browser. Bei Fragen zu einem Kind ist das für uns keine Fußnote, sondern die Grundlage.</span>
     </div>
   </div>
 </header>
@@ -590,8 +590,12 @@ img,svg{max-width:100%}
         <div class="direct-send" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
           <input type="email" id="send-email" inputmode="email" autocomplete="email" placeholder="eure@email.de" aria-label="Eure E-Mail-Adresse für die Bestellung" style="flex:1 1 220px;min-width:0;padding:10px 14px;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface);font:inherit">
           <input type="text" id="send-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <button type="button" class="btn" id="send-btn">Direkt an uns senden</button>
+          <button type="button" class="btn" id="send-btn" disabled aria-describedby="send-consent-hint">Direkt an uns senden</button>
         </div>
+        <label for="send-consent" style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:.95em;line-height:1.45;cursor:pointer">
+          <input type="checkbox" id="send-consent" style="margin-top:4px;flex:0 0 auto;width:18px;height:18px">
+          <span id="send-consent-hint">Ja, ihr dürft den Bestell-Code (Vorname des Kindes, Alter, Aussehen inkl. eventueller Angaben zu Brille oder Hörgerät, Freitext) zusammen mit unserer E-Mail-Adresse über euren Übermittlungsdienst an jay@aivantum.com senden und zur Bearbeitung unserer Bestellung oder Vormerkung verarbeiten. Diese Einwilligung können wir jederzeit widerrufen (<a href="datenschutz.html#bestellung">Datenschutz, Abschnitt 4</a>). Ohne Häkchen bleibt der Weg über euer eigenes Mail-Programm.</span>
+        </label>
         <p id="send-status" hidden style="margin-top:10px;font-weight:600"></p>
         <div class="code-actions">
           <a class="btn ghost" id="mail-btn" href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
@@ -625,7 +629,7 @@ img,svg{max-width:100%}
 
 <footer>
   <div class="wrap">
-    <p><strong style="color:var(--body-strong)">Du bist okay</strong> — personalisierte Kinderbücher, die Mut-Sätze schenken. Der Quick-Check ist eine Schenk-Hilfe, keine Diagnose. Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was du selbst per E-Mail schickst. Details im <a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a>.</p>
+    <p><strong style="color:var(--body-strong)">Du bist okay</strong> — personalisierte Kinderbücher, die Mut-Sätze schenken. Der Quick-Check ist eine Schenk-Hilfe, keine Diagnose. Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was ihr selbst abschickt, per eigenem Mail-Programm oder nach eurer Einwilligung per Direktversand. Details im <a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a>.</p>
     <p>Bestellungen &amp; Fragen: <a href="mailto:jay@aivantum.com">jay@aivantum.com</a></p>
   </div>
 </footer>
@@ -838,6 +842,14 @@ img,svg{max-width:100%}
   // ---- Direkt-Senden (Worker-Variante, 2026-07-07) ----
   // Schickt den Bestell-Code ueber den aivantum-Worker (Resend-Mail-Relay) an uns
   // und bestaetigt der Familie sofort per Mail. Mailto bleibt als eigener Weg bestehen.
+  // Einwilligung (2026-09-04, Präsenz-Audit): der Knopf ist erst nach dem Häkchen aktiv.
+  // Der Bestell-Code trägt Angaben über ein Kind (Name, Aussehen, ggf. Hörgerät) — die
+  // Übermittlung braucht eine ausdrückliche Einwilligung, nicht nur einen Klick.
+  var consentBox = document.getElementById("send-consent");
+  var sendBtnEl = document.getElementById("send-btn");
+  if (consentBox && sendBtnEl){
+    consentBox.addEventListener("change", function(){ sendBtnEl.disabled = !consentBox.checked; });
+  }
   document.getElementById("send-btn").addEventListener("click", function(){
     var btn = this;
     var email = (document.getElementById("send-email").value || "").trim();
@@ -848,6 +860,10 @@ img,svg{max-width:100%}
       status.textContent = msg;
       status.style.color = ok ? "#2c6355" : "#b3422a";
     };
+    if (!consentBox || !consentBox.checked){
+      show("Bitte setzt zuerst das Häkchen zur Einwilligung — oder nutzt den Weg über euer eigenes Mail-Programm.", false);
+      return;
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
       show("Bitte gebt eine g\u00fcltige E-Mail-Adresse ein \u2014 an sie schicken wir die Best\u00e4tigung.", false);
       return;
@@ -864,6 +880,8 @@ img,svg{max-width:100%}
         art: "tomodachi",
         email: email,
         code: code,
+        einwilligung: true,
+        einwilligung_zeit: new Date().toISOString(),
         source: location.host + location.pathname,
         website: document.getElementById("send-website").value
       })
