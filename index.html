@@ -2,921 +2,515 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<title>Du bist okay · Welches Buch passt zu eurem Kind?</title>
-<meta name="description" content="Du bist okay — personalisierte Kinderbücher. Ein kurzer Quick-Check für Eltern und Schenkende: Welches Thema passt gerade zu eurem Kind? Alle Antworten bleiben auf deinem Gerät.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Du bist okay · Bücher, die das Gespräch leichter machen</title>
+<meta name="description" content="Personalisierte Kinderbücher über Muster, die früh entstehen – und die Sätze, die davon befreien. Für Kinder von 3 bis 10.">
 <style>
-/* ============================================================
-   „Du bist okay" Quick-Check — Optik nach dem AI-Quick-Check-Design
-   (self-contained: Systemschriften, keine externen Ressourcen).
-   ============================================================ */
+/* ---------- Haus-Schriften, eingebettet ---------- */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 700;font-display:swap;
+src:url('fonts/cormorant-latin-ext.woff2') format('woff2');
+unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 700;font-display:swap;
+src:url('fonts/cormorant-latin.woff2') format('woff2');
+unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 700;font-display:swap;
+src:url('fonts/cormorant-italic-latin.woff2') format('woff2');
+unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 700;font-display:swap;
+src:url('fonts/cormorant-italic-latin-ext.woff2') format('woff2');
+unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 800;font-display:swap;
+src:url('fonts/hanken-latin-ext.woff2') format('woff2');
+unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 800;font-display:swap;
+src:url('fonts/hanken-latin.woff2') format('woff2');
+unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* ---------- Web-Token-Leiter (clamp), nicht die Dokument-Tokens ---------- */
 :root{
-  --font-display:"Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
-  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --s-1:clamp(.82rem,.78rem + .2vw,.92rem);
+  --s0:clamp(1rem,.95rem + .3vw,1.13rem);
+  --s1:clamp(1.2rem,1.05rem + .7vw,1.5rem);
+  --s2:clamp(1.6rem,1.2rem + 1.9vw,2.6rem);
+  --s3:clamp(2.2rem,1.4rem + 4vw,4.4rem);
+  --s4:clamp(2.8rem,1.5rem + 6.4vw,6.6rem);
+  --band:clamp(3.5rem,2rem + 6vw,8rem);
+  --spur:min(100% - 2.5rem, 68ch);
+  --flaeche:min(100% - 2.5rem, 1180px);
 
-  /* Paper / surfaces */
-  --paper:#faf6ee; --paper-soft:#f4eee1; --paper-strong:#ece4d3;
-  --surface:#ffffff; --surface-2:#fcfaf5;
-
-  /* Ink / text */
-  --ink:#1d1c17; --body:#45433c; --body-strong:#2c2a24;
-  --muted:#78756b; --muted-soft:#a29e92;
-
-  /* Lines */
-  --line:#e6dfd1; --line-soft:#f0eadd; --line-strong:#d6ccb8;
-
-  /* Brand — deep evergreen-teal (trust) */
-  --brand:#204e45; --brand-hover:#183b34;
-  --brand-soft:#e4ede9; --brand-soft-2:#d3e2db; --brand-ink:#2c6355;
-  --on-brand:#fbf7ef;
-
-  /* Accent — warm amber */
-  --accent:#e0a03a; --accent-soft:#fbebcb; --accent-ink:#93650f;
-
-  /* Ergebnis-Farben (ruhig, nie alarmierend) */
-  --gruen:#4e8a6b; --gruen-soft:#dcebe2; --gruen-text:#2f6349;
-  --gelb:#dda23a;  --gelb-soft:#f9eccf;  --gelb-text:#8a6413;
-
-  /* Dark surface */
-  --dark:#16211e; --on-dark:#f6f1e8;
-
-  --r-xs:6px; --r-sm:10px; --r-md:14px; --r-lg:20px; --r-pill:9999px;
-  --shadow-xs:0 1px 2px rgba(29,28,23,.05);
-  --shadow-sm:0 1px 2px rgba(29,28,23,.04),0 2px 6px rgba(29,28,23,.06);
-  --focus-ring:0 0 0 3px rgba(32,78,69,.22);
-  --ease:cubic-bezier(.2,.6,.2,1); --ease-out:cubic-bezier(.16,1,.3,1);
-  --maxw:1040px;
+  --papier:#fbf4e6; --papier-2:#f4e9d4; --tinte:#241d16; --tinte-2:#5c4f41;
+  --holz:#a9764a; --holz-tief:#6d4526; --moos:#4e7a52; --moos-hell:#e6f0e2;
+  --kreide:#fffdf7; --linie:#e3d5bb; --rot:#c1553a;
+  --font:'Hanken Grotesk',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --fd:'Cormorant Garamond',Georgia,'Times New Roman',serif;
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--body);font-family:var(--font-body);
-  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+body{margin:0;background:var(--papier);color:var(--tinte);font-family:var(--font);
+  font-size:var(--s0);line-height:1.62;-webkit-text-size-adjust:100%;overflow-x:hidden}
+.spur{width:var(--spur);margin-inline:auto}
+.flaeche{width:var(--flaeche);margin-inline:auto}
+section{padding-block:var(--band)}
+h1,h2,h3{font-family:var(--fd);font-weight:600;line-height:1.06;letter-spacing:-.015em;margin:0}
+p{margin:0 0 1em}
+a{color:var(--holz-tief)}
+.klein{font-size:var(--s-1);color:var(--tinte-2)}
 
-h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);margin:0 0 .4em;
-  font-weight:600;line-height:1.1;letter-spacing:-.4px}
-h1{font-size:clamp(2.1rem,6vw,3.2rem);letter-spacing:-1px;line-height:1.03}
-h2{font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.6px}
-h3{font-size:1.3rem;letter-spacing:-.3px}
-p{margin:0 0 .85em}
-a{color:var(--brand-ink);text-underline-offset:2px}
-a:hover{color:var(--brand)}
-small{color:var(--muted);font-size:.82rem}
-.overline{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--brand-ink)}
+/* ---------- Das Motiv: Muster kippt in Gegen-Satz ---------- */
+.kippe{display:block;position:relative}
+.kippe .muster{font-family:var(--fd);color:var(--tinte-2);display:block;position:relative;width:max-content;max-width:100%}
+.kippe .muster::after{content:"";position:absolute;left:0;right:0;top:52%;height:2px;
+  background:var(--rot);transform:scaleX(0);transform-origin:left;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1) .15s}
+.kippe .gegen{display:block;color:var(--holz-tief);font-family:var(--fd);
+  opacity:.45;transition:opacity .7s cubic-bezier(.2,.7,.3,1) .3s}
+.kippe.an .muster::after,.kippe:hover .muster::after{transform:scaleX(1)}
+.kippe.an .gegen,.kippe:hover .gegen{opacity:1}
 
-/* ===== Header ===== */
-header.mast{position:relative;overflow:hidden;background:var(--paper);
-  border-bottom:1px solid var(--line);padding:clamp(36px,6vw,64px) 0 clamp(30px,5vw,50px)}
-header.mast .rings{position:absolute;top:50%;right:-90px;transform:translateY(-50%);
-  width:420px;height:420px;pointer-events:none;opacity:.9}
-header.mast .rings circle{fill:none;stroke-width:1.5}
-.brand-chip{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:1.2px;color:var(--brand-ink);
-  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);
-  padding:6px 15px 6px 7px;margin-bottom:22px;box-shadow:var(--shadow-xs)}
-.brand-chip .tile{width:22px;height:22px;border-radius:7px;background:var(--brand);color:var(--on-brand);
-  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:.78rem;font-weight:700}
-.mast .lead{font-size:clamp(1.05rem,2vw,1.2rem);color:var(--body-strong);max-width:56ch;position:relative;z-index:1}
-.mast h1{position:relative;z-index:1;max-width:22ch}
+/* ---------- Hero ---------- */
+.hero{position:relative;padding-block:clamp(3rem,2rem + 6vw,7rem) var(--band);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -10% -30% -10%;height:60%;
+  background:radial-gradient(60% 70% at 50% 100%,rgba(169,118,74,.16),transparent 70%);pointer-events:none}
+.hero .inhalt{position:relative}
+.hero .marke{font-size:var(--s-1);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--holz);font-weight:700;margin:0 0 1.6rem}
+.hero h1{font-size:var(--s4);margin-bottom:1.1rem}
+.hero .unter{font-size:var(--s1);max-width:34ch;color:var(--tinte-2);font-family:var(--fd);font-style:italic}
+.hero-kippe{margin-top:clamp(2.4rem,1.5rem + 3vw,4rem);font-size:var(--s2);line-height:1.18}
+.hero-kippe .muster{font-size:1em}
+.hero-bild{margin-top:var(--band);border-radius:18px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(36,29,22,.06),0 30px 60px -30px rgba(36,29,22,.35)}
+.hero-bild img{display:block;width:100%;height:auto}
 
-/* ===== Datenschutz-Versprechen ===== */
-.privacy-pledge{display:flex;gap:12px;align-items:flex-start;background:var(--gruen-soft);
-  border:1px solid var(--gruen);border-radius:var(--r-md);padding:14px 18px;margin:20px 0 0;
-  max-width:640px;position:relative;z-index:1}
-.privacy-pledge .lock{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--gruen);
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
-.privacy-pledge b{color:var(--gruen-text);display:block;font-size:.98rem}
-.privacy-pledge span{font-size:.88rem;color:var(--body-strong);line-height:1.5}
+/* ---------- Manifest ---------- */
+.manifest{background:var(--papier-2)}
+.manifest h2{font-size:var(--s2);margin-bottom:1.2rem}
+.manifest .stimme{font-size:var(--s1);font-family:var(--fd);line-height:1.35;color:var(--holz-tief);
+  border-left:3px solid var(--holz);padding-left:1.2rem;margin:1.8rem 0}
 
-/* ===== Sticky-Fortschritt ===== */
-.progress-bar{position:sticky;top:0;z-index:30;background:rgba(250,246,238,.92);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);padding:11px 0}
-.progress-bar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.progress-bar b{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);font-weight:500;
-  white-space:nowrap;flex:0 0 auto}
-.track{flex:1;height:8px;background:var(--paper-strong);border-radius:var(--r-pill);
-  overflow:hidden;min-width:100px}
-.track>i{display:block;height:100%;width:0;background:var(--brand);border-radius:var(--r-pill);
-  transition:width .4s var(--ease)}
+/* ---------- Weiche ---------- */
+.weiche h2{font-size:var(--s2);margin-bottom:.6rem}
+.wege{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:2.2rem}
+.weg{background:var(--kreide);border:1px solid var(--linie);border-radius:16px;padding:1.7rem 1.6rem;
+  display:flex;flex-direction:column;transition:transform .18s ease-out,box-shadow .18s ease-out}
+.weg:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(36,29,22,.4)}
+.weg h3{font-size:var(--s1);margin-bottom:.5rem}
+.weg .preis{font-size:var(--s-1);font-weight:700;color:var(--holz-tief);
+  background:var(--papier-2);padding:.3rem .8rem;border-radius:999px;align-self:flex-start;margin-bottom:.9rem}
+.weg p{flex:1}
+.knopf{display:inline-block;background:var(--holz-tief);color:#fff;text-decoration:none;
+  padding:.72rem 1.4rem;border-radius:999px;font-weight:700;font-size:var(--s-1);
+  align-self:flex-start;transition:background .18s ease-out}
+.knopf:hover{background:var(--tinte)}
+.knopf.leise{background:transparent;color:var(--holz-tief);border:1.5px solid var(--holz)}
+.knopf.leise:hover{background:var(--papier-2)}
 
-/* ===== Buttons ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  background:var(--brand);color:var(--on-brand);border:1.5px solid var(--brand);
-  border-radius:var(--r-md);padding:12px 22px;font-size:.95rem;font-weight:600;
-  cursor:pointer;font-family:var(--font-body);text-decoration:none;line-height:1;
-  transition:background .2s var(--ease);box-shadow:var(--shadow-sm)}
-.btn:hover{background:var(--brand-hover);border-color:var(--brand-hover);color:var(--on-brand)}
-.btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
-.btn.ghost{background:var(--surface);color:var(--brand);border-color:var(--line-strong)}
-.btn.ghost:hover{background:var(--paper-soft);color:var(--brand);border-color:var(--brand)}
-.btn:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+/* ---------- Das Raster: 5 Muster × 2 Orte ---------- */
+.raster-kopf{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.8rem;
+  position:sticky;top:0;background:var(--papier);padding-block:.8rem;z-index:2}
+.raster-kopf div{font-size:var(--s-1);letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--holz);text-align:center}
+.zeile{margin-bottom:1.6rem}
+.zeile .muster-label{font-family:var(--fd);font-size:var(--s1);color:var(--tinte-2);
+  margin-bottom:.6rem;display:flex;align-items:baseline;gap:.7rem}
+.zeile .muster-label b{font-family:var(--font);font-size:var(--s-1);font-weight:700;
+  color:var(--holz);letter-spacing:.1em;text-transform:uppercase}
+.paar{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.buch{background:var(--kreide);border:1px solid var(--linie);border-radius:14px;
+  padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.45rem;
+  transition:transform .18s ease-out,box-shadow .18s ease-out,border-color .18s ease-out}
+.buch:hover{transform:translateY(-3px);border-color:var(--holz);
+  box-shadow:0 18px 34px -24px rgba(36,29,22,.42)}
+.buch .reihe{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--holz)}
+.buch .titel{font-family:var(--fd);font-size:var(--s1);line-height:1.1}
+.buch .alter{font-size:var(--s-1);color:var(--tinte-2)}
+.buch .kippe{margin-top:.3rem;font-size:var(--s-1);line-height:1.45}
+.buch .kippe .muster{font-style:italic}
+.buch .kippe .gegen{font-weight:600;margin-top:.15rem;opacity:1}
+/* Auf Karten ist der Gegen-Satz IMMER lesbar — Hover gibt es auf dem Handy nicht.
+   Nur der Strich durchs Muster bleibt eine Belohnung fuers Drueberfahren. */
+.buch.entwurf{background:var(--papier-2);border-style:dashed}
+.buch.entwurf .titel{color:var(--tinte-2)}
 
-/* ===== Cards / Callouts ===== */
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:26px 28px;box-shadow:var(--shadow-sm);margin:20px 0}
-.card.accent-top{border-top:4px solid var(--brand)}
-.card.inv{background:var(--dark);color:var(--on-dark);border:none}
-.card.inv h2,.card.inv h3{color:var(--on-dark)}
-.card.inv p{color:#c9d3ce}
-.card>h2:first-child,.card>h3:first-child{margin-top:0}
-.card ul{margin:.4em 0;padding-left:1.15em}
-.card li{margin:.3em 0}
-.callout{border-left:3px solid var(--brand);background:var(--brand-soft);
-  padding:14px 18px;border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:.95rem;line-height:1.55;margin:16px 0}
-.callout.warn{border-left-color:var(--accent);background:var(--accent-soft)}
-.callout.ok{border-left-color:var(--gruen);background:var(--gruen-soft)}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;
-  padding:4px 11px;border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.5px}
-.badge.ok{background:var(--gruen-soft);color:var(--gruen-text)}
-.badge.warn{background:var(--gelb-soft);color:var(--gelb-text)}
+/* ---------- Check ---------- */
+.check{background:var(--tinte);color:var(--kreide)}
+.check h2{font-size:var(--s2);color:var(--kreide);margin-bottom:.8rem}
+.check .lead{color:#d8cbb8;max-width:52ch}
+.frage{border-top:1px solid rgba(255,253,247,.16);padding-block:1.5rem}
+.frage:last-of-type{border-bottom:1px solid rgba(255,253,247,.16)}
+.frage .txt{font-family:var(--fd);font-size:var(--s1);line-height:1.22;margin-bottom:.9rem;max-width:40ch}
+.skala{display:flex;gap:.5rem;flex-wrap:wrap}
+.skala button{background:transparent;color:#d8cbb8;border:1.5px solid rgba(255,253,247,.28);
+  border-radius:999px;padding:.5rem 1.15rem;font:inherit;font-size:var(--s-1);cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s}
+.skala button:hover{border-color:var(--kreide);color:var(--kreide)}
+.skala button[aria-pressed="true"]{background:var(--moos);border-color:var(--moos);color:#fff;font-weight:700}
+#ergebnis{margin-top:2rem;background:rgba(255,253,247,.07);border-radius:16px;padding:1.6rem 1.5rem}
+#ergebnis h3{font-size:var(--s1);color:var(--kreide);margin-bottom:.5rem}
+#ergebnis p{color:#d8cbb8}
+#ergebnis .treffer{font-family:var(--fd);font-size:var(--s2);color:#9fd6a8;line-height:1.1;margin:.4rem 0 .8rem}
+.no-js-hinweis{margin-top:1.5rem;font-size:var(--s-1);color:#d8cbb8;
+  border-left:3px solid var(--moos);padding-left:1rem}
 
-.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:24px 0}
-.meta-grid .card{margin:0;padding:20px 22px}
-.meta-grid h3{font-family:var(--font-body);font-size:.72rem;text-transform:uppercase;
-  letter-spacing:1px;color:var(--brand-ink);margin:0 0 8px;font-weight:700}
-.meta-grid p{font-size:.94rem;margin:0;color:var(--body)}
-
-/* ===== Skala-Legende ===== */
-.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:16px 0 0}
-.legend .lg{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-sm);
-  padding:11px 13px;font-size:.82rem;color:var(--body)}
-.legend .lg b{display:block;font-family:var(--font-display);color:var(--brand);font-size:1.02rem;margin-bottom:2px}
-
-/* ===== Fragebogen ===== */
-section.block{margin:44px 0}
-.block-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  border-bottom:1px solid var(--line-strong);padding-bottom:14px;margin-bottom:8px}
-.block-head .num{font-family:var(--font-display);font-size:2.3rem;font-weight:600;color:var(--brand);
-  line-height:1;letter-spacing:-1px;flex:0 0 auto}
-.block-head h2{margin:0;flex:1 1 auto}
-.block-head .frage{color:var(--muted);font-size:.92rem;line-height:1.5;width:100%;margin-top:2px;flex-basis:100%}
-
-fieldset.item{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);
-  padding:20px 22px;margin:16px 0;box-shadow:var(--shadow-xs);min-inline-size:0;
-  transition:box-shadow .2s var(--ease),border-color .2s var(--ease)}
-fieldset.item:focus-within{border-color:var(--brand-soft-2);box-shadow:var(--shadow-sm)}
-/* Legend normalisieren: aus der Rahmenlinie in den Fluss holen, damit lange Fragetexte
-   NIE aus der Karte laufen (bekannte 390px-Falle; iOS-tauglicher Fix). */
-fieldset.item legend{float:left;width:100%;padding:0;margin:0 0 14px;
-  font-weight:500;font-size:1.02rem;line-height:1.45;color:var(--body-strong)}
-fieldset.item legend+*{clear:both}
-
-.scale{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.scale .opt{position:relative;display:flex;min-width:0}
-.scale input{position:absolute;opacity:0;width:0;height:0}
-.scale label{flex:1;min-width:0;text-align:center;border:1.5px solid var(--line);
-  border-radius:var(--r-md);padding:11px 4px 9px;cursor:pointer;font-size:.7rem;line-height:1.25;
-  color:var(--muted);background:var(--surface-2);user-select:none;
-  display:flex;flex-direction:column;align-items:center;gap:3px;min-height:48px;justify-content:center;
-  transition:border-color .15s var(--ease),background .15s var(--ease),color .15s var(--ease)}
-.scale label .v{font-weight:700;font-size:.95rem;color:var(--brand);line-height:1.1}
-.scale label:hover{border-color:var(--brand-soft-2);background:var(--brand-soft)}
-.scale input:checked+label{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
-.scale input:checked+label .v{color:var(--on-brand)}
-.scale input:focus-visible+label{outline:none;box-shadow:var(--focus-ring);border-color:var(--brand)}
-
-/* ===== Formular-Felder (Rahmen + Individualisierung) ===== */
-.fld-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:6px}
-.fld{display:block;min-width:0}
-.fld>span{display:block;font-size:.78rem;font-weight:700;letter-spacing:.3px;
-  text-transform:uppercase;color:var(--brand-ink);margin:0 0 6px}
-.fld input[type=text],.fld select,.fld textarea{width:100%;border:1.5px solid var(--line-strong);
-  border-radius:var(--r-md);padding:11px 13px;font-size:1rem;font-family:var(--font-body);
-  color:var(--ink);background:var(--surface-2);max-width:100%}
-.fld select{appearance:auto}
-.fld textarea{min-height:110px;resize:vertical;line-height:1.5}
-.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;box-shadow:var(--focus-ring);
-  border-color:var(--brand);background:var(--surface)}
-.fld .hint{display:block;font-size:.78rem;color:var(--muted);margin-top:5px;text-transform:none;
-  letter-spacing:0;font-weight:400}
-.choice-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
-.choice-row .chip{position:relative;display:flex}
-.choice-row input{position:absolute;opacity:0;width:0;height:0}
-.choice-row label{border:1.5px solid var(--line-strong);background:var(--surface);border-radius:var(--r-pill);
-  padding:9px 18px;font-size:.9rem;font-weight:500;color:var(--body-strong);cursor:pointer;
-  transition:border-color .15s var(--ease),background .15s var(--ease)}
-.choice-row label:hover{border-color:var(--brand);background:var(--brand-soft)}
-.choice-row input:checked+label{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
-.choice-row input:focus-visible+label{box-shadow:var(--focus-ring)}
-
-/* ===== Ergebnis ===== */
-#ergebnis{scroll-margin-top:72px;margin-top:20px}
-.muster-card{border:1px solid var(--line);border-left:4px solid var(--brand);background:var(--surface-2);
-  padding:18px 20px;border-radius:0 var(--r-md) var(--r-md) 0;margin:14px 0}
-.muster-card h4{margin:0 0 6px;color:var(--ink);font-family:var(--font-display);font-size:1.18rem}
-.muster-card p{margin:0 0 .5em;font-size:.95rem}
-.muster-card .erlauber{background:var(--gruen-soft);border-left:3px solid var(--gruen);
-  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:11px 14px;margin:10px 0;font-size:.95rem;color:var(--gruen-text);font-weight:600}
-.buch-zeile{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
-.buch-zeile b{color:var(--ink);font-size:1rem}
-.score-bars{display:grid;gap:9px;margin:14px 0 4px}
-.score-bar{display:grid;grid-template-columns:170px 1fr 34px;align-items:center;gap:12px;font-size:.88rem}
-.score-bar .lbl{color:var(--body);min-width:0;overflow-wrap:anywhere}
-.score-bar .track{height:10px;background:var(--paper-strong);border-radius:var(--r-pill);overflow:hidden;min-width:0}
-.score-bar .track>i{display:block;height:100%;border-radius:var(--r-pill);background:var(--brand);
-  transition:width .5s var(--ease-out)}
-.score-bar .val{text-align:right;font-family:var(--font-mono);font-weight:500;color:var(--muted)}
-#code-out{width:100%;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface-2);
-  font-family:var(--font-mono);font-size:.78rem;line-height:1.5;color:var(--ink);padding:12px 14px;
-  min-height:230px;resize:vertical}
-.code-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-#copy-ok{font-size:.85rem;color:var(--gruen-text);font-weight:600;display:none}
-#copy-ok.show{display:inline}
-
-.js-only{display:none}
-.no-js-note{display:block}
-
-footer{border-top:1px solid var(--line);margin-top:64px;padding:32px 0 56px;color:var(--muted);font-size:.82rem}
-footer a{color:var(--muted);text-decoration:underline}
-footer a:hover{color:var(--brand-ink)}
-
-@media print{
-  body{background:#fff}
-  .progress-bar,.no-print{display:none}
-  .card,.callout,fieldset.item{break-inside:avoid;box-shadow:none}
-}
-
-/* ===== Mobile — echte 390px, kein Overflow ===== */
-@media (max-width:640px){
-  .wrap{padding:0 18px}
-  .card{padding:20px 18px;border-radius:var(--r-md)}
-  fieldset.item{padding:18px 16px}
-  .scale{gap:6px}
-  .scale label{padding:10px 2px 8px;font-size:.62rem;gap:2px;border-radius:var(--r-sm)}
-  .scale label .v{font-size:.85rem}
-  .score-bar{grid-template-columns:120px 1fr 28px;gap:9px;font-size:.8rem}
-  .privacy-pledge{padding:12px 14px}
-}
-@media (max-width:400px){
-  .scale label .sub{display:none}   /* Mikro-Screens: nur das Kernwort, kein Überlauf */
-  .score-bar{grid-template-columns:104px 1fr 26px}
-}
-html,body{overflow-x:hidden}
-img,svg{max-width:100%}
+/* ---------- Prozess, Bestellung, Fuß ---------- */
+.prozess h2,.bestellung h2{font-size:var(--s2);margin-bottom:1rem}
+.schritte{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:1.8rem}
+.schritt{background:var(--kreide);border:1px solid var(--linie);border-radius:14px;padding:1.3rem}
+.schritt .nr{font-family:var(--fd);font-size:var(--s2);color:var(--holz);line-height:1;display:block;margin-bottom:.3rem}
+.schritt h3{font-size:var(--s0);font-family:var(--font);font-weight:700;margin-bottom:.3rem}
+.bestellung{background:var(--moos-hell)}
+.zusicherung{background:var(--kreide);border-radius:14px;padding:1.3rem 1.5rem;margin-top:1.4rem;
+  border-left:4px solid var(--moos)}
+footer{background:var(--tinte);color:#bdb0a0;padding-block:var(--band)}
+footer h3{font-family:var(--font);font-size:var(--s0);font-weight:700;color:var(--kreide);margin-bottom:.5rem}
+footer a{color:#d8cbb8}
+footer .cols{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+footer .klein,.check .klein{color:#bdb0a0}
 
 @media (prefers-reduced-motion:reduce){
-  *{scroll-behavior:auto!important}
-  .track>i,.score-bar .track>i{transition:none}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .kippe .muster::after{transform:scaleX(1)}
+  .kippe .gegen{opacity:1}
+}
+@media (max-width:620px){
+  .raster-kopf{grid-template-columns:1fr;position:static}
+  .raster-kopf div:last-child{margin-top:.4rem}
+  .paar{grid-template-columns:1fr}
+  .zeile{border-bottom:1px solid var(--linie);padding-bottom:1.3rem}
+}
+@media print{
+  body{background:#fff}
+  .check{background:#fff;color:#000}
+  .kippe .gegen{opacity:1}
 }
 </style>
 </head>
 <body>
 
-<header class="mast">
-  <svg class="rings" viewBox="0 0 420 420" aria-hidden="true">
-    <circle cx="210" cy="210" r="60"  stroke="var(--brand-soft-2)"/>
-    <circle cx="210" cy="210" r="110" stroke="var(--brand-soft-2)"/>
-    <circle cx="210" cy="210" r="160" stroke="var(--line)"/>
-    <circle cx="210" cy="210" r="205" stroke="var(--line)"/>
-    <circle cx="330" cy="150" r="7" fill="var(--accent)" stroke="none"/>
-  </svg>
-  <div class="wrap">
-    <span class="brand-chip"><span class="tile" style="font-size:.6rem;letter-spacing:0">ok</span>Du bist okay · personalisierte Kinderbücher</span>
-    <h1>Welches Buch passt gerade zu eurem Kind?</h1>
-    <p class="lead">Unsere Bücher erzählen Geschichten, in denen euer Kind sich wiederfindet — mit seinem Namen, seinem Aussehen, seiner Welt. Dieser kurze Quick-Check hilft beim Aussuchen: 15 Alltagsmomente, etwa 5 Minuten, am Ende eine Buch-Empfehlung samt fertigem Bestell-Code.</p>
-    <div class="privacy-pledge">
-      <span class="lock" aria-hidden="true">🔒</span>
-      <span><b>Alle Antworten bleiben auf deinem Gerät.</b>
-      Diese Seite setzt keine Cookies und sendet von sich aus nichts. Erst wenn ihr am Ende den Bestell-Code selbst verschickt — über euer eigenes Mail-Programm oder, nach eurer Einwilligung, über unseren Direkt-Senden-Knopf — verlässt etwas euren Browser. Bei Fragen zu einem Kind ist das für uns keine Fußnote, sondern die Grundlage.</span>
-    </div>
-  </div>
-</header>
+<!-- 1 · HERO -->
+<section class="hero">
+<div class="spur inhalt">
+  <p class="marke">Du bist okay &nbsp;·&nbsp; Du bist bereit</p>
+  <h1>Dein Kind<br>ist okay.</h1>
+  <p class="unter">Und solange ihr im Gespräch bleibt, gibt es einen Weg nach vorn.</p>
 
-<!-- Sticky-Fortschritt: nur mit JS sinnvoll -->
-<div class="progress-bar js-only" id="progress">
-  <div class="wrap">
-    <b id="progress-text">0 / 15 beantwortet</b>
-    <span class="track"><i id="progress-fill"></i></span>
-    <button class="btn" id="eval-btn" type="button" disabled>Empfehlung anzeigen</button>
+  <div class="kippe hero-kippe" id="hero-kippe">
+    <span class="muster">„Ich muss stark sein.“</span>
+    <span class="gegen">„Ich darf Hilfe holen.“</span>
   </div>
 </div>
+<div class="flaeche hero-bild">
+  <img src="img/hero.jpg" alt="Illustration aus „Die Zeit im Teig“: Mira in der Backstube" loading="eager" width="1200" height="800">
+</div>
+</section>
 
-<main class="wrap">
+<!-- 2 · MANIFEST -->
+<section class="manifest">
+<div class="spur">
+  <h2>Warum es diese Bücher gibt</h2>
+  <p>Ich arbeite seit fünfzehn Jahren mit Führungskräften. Fast alle tragen Sätze mit sich herum,
+  die sie als Kind gelernt haben: <em>streng dich an</em>, <em>sei stark</em>, <em>mach es allen
+  recht</em>. Diese Sätze haben sie weit gebracht — sie sind ja der Grund, warum sie da sind, wo
+  sie sind.</p>
+  <p>Und irgendwann stehen dieselben Sätze im Weg.</p>
+  <p class="stimme">Nicht, weil mit diesen Menschen etwas nicht stimmt. Sondern weil niemand mit
+  ihnen darüber gesprochen hat, als es noch leicht war.</p>
+  <p>Genau da setzen diese Bücher an. Sie sind keine Vorbeugung und erst recht keine Diagnose.
+  Sie sind eine <strong>Übung im Gespräch</strong> — zu einer Zeit, in der so ein Gespräch noch
+  nebenbei passieren kann, auf dem Sofa, mit einem Bild dazwischen.</p>
+  <p>Jedes Buch nimmt ein Muster, das viele Kinder kennen, und schenkt ihm einen Satz, der
+  befreit. Mehr macht es nicht. Das reicht meistens.</p>
+</div>
+</section>
 
-  <!-- ===== INTRO ===== -->
-  <section class="card accent-top" id="intro">
-    <p class="overline">Du bist okay · Quick-Check</p>
-    <h2>Worum es geht — und worum nicht</h2>
-    <p>Jedes Buch der Reihe erzählt von einem Muster, das viele Kinder aus ihrem Alltag kennen — zum Beispiel „stark sein müssen" oder „alles perfekt machen wollen" — und schenkt ihnen dazu einen befreienden Gegen-Satz. Der Quick-Check schaut mit euch, <em>für welches dieser Themen euer Kind gerade am zugänglichsten sein könnte.</em></p>
-    <div class="meta-grid">
-      <div class="card"><h3>Zweck</h3><p>Eine Schenk-Hilfe, kein Test. Es gibt keine richtigen oder falschen Antworten — und kein Kind bekommt ein Etikett.</p></div>
-      <div class="card"><h3>Dauer</h3><p>Etwa 5 Minuten. 15 Alltagsmomente, jeweils „oft", „manchmal" oder „selten".</p></div>
-      <div class="card"><h3>Für wen</h3><p>Eltern, Großeltern, Pat:innen — alle, die einem Kind zwischen 3 und 9 ein Buch schenken möchten, das wirklich passt.</p></div>
+<!-- 3 · DIE WEICHE -->
+<section class="weiche" id="weiche">
+<div class="spur">
+  <h2>Zwei Wege zum Buch</h2>
+  <p class="klein">Ihr wisst schon, worum es geht? Dann gleich zu den Büchern. Und wenn nicht,
+  schauen wir zusammen.</p>
+</div>
+<div class="flaeche">
+  <div class="wege">
+    <div class="weg">
+      <h3>Ein Buch, das es gibt</h3>
+      <span class="preis">ab 16,90 €</span>
+      <p>Zehn Geschichten, jede zu einem Muster. Mit dem Namen eures Kindes und in einer von
+      mehreren Grundvarianten — das reicht den meisten völlig.</p>
+      <a class="knopf leise" href="#buecher">Zu den Büchern</a>
     </div>
-    <div class="callout warn">
-      <strong>Wichtig:</strong> Dieser Quick-Check ist keine Diagnose und bewertet euer Kind nicht. Alle beschriebenen Muster sind normale, liebenswerte Seiten von Kindern — jedes Kind trägt alle davon in sich, mal mehr, mal weniger sichtbar. Wir suchen nur die Geschichte, die gerade am besten andockt.
+    <div class="weg">
+      <h3>Ein Buch für euer Kind</h3>
+      <span class="preis">+ 5,00 €</span>
+      <p>Sechs kurze Fragen, dann wissen wir, welches Muster bei euch gerade dran ist — und die
+      Geschichte wird auf euer Kind zugeschnitten: Name, Aussehen, eure Welt.</p>
+      <a class="knopf" href="#check">Die sechs Fragen</a>
     </div>
-  </section>
+  </div>
+</div>
+</section>
 
-  <!-- ===== SKALEN-LEGENDE ===== -->
-  <section class="card" id="skala">
-    <h3>So antwortet ihr</h3>
-    <p>Denkt an die letzten Wochen und antwortet aus dem Bauch: Wie oft erlebt ihr die beschriebene Situation bei eurem Kind?</p>
-    <div class="legend">
-      <div class="lg"><b>oft</b>gehört bei uns zum Alltag</div>
-      <div class="lg"><b>manchmal</b>kommt immer wieder mal vor</div>
-      <div class="lg"><b>selten</b>eigentlich nie</div>
-    </div>
-    <p style="margin-top:14px"><small>Wenn ihr eine Situation nicht einschätzen könnt, lasst sie einfach offen — sie zählt dann nicht mit.</small></p>
-  </section>
-
-  <form id="check">
-
-  <!-- ===== BLOCK 1: RAHMEN ===== -->
-  <section class="block" id="rahmen">
-    <div class="block-head"><span class="num">1</span><h2>Für wen ist das Buch?</h2>
-      <span class="frage">Das Alter bestimmt die Buch-Variante: Unsere Geschichten gibt es in einer Fassung für 3–6 und einer für 6–9(+).</span></div>
-    <div class="card">
-      <div class="fld-grid">
-        <label class="fld"><span>Alter des Kindes</span>
-          <select id="f-alter" name="alter">
-            <option value="">bitte wählen …</option>
-            <option value="unter-3">unter 3</option>
-            <option value="3-6">3 bis 6</option>
-            <option value="6-9">6 bis 9</option>
-            <option value="ueber-9">älter als 9</option>
-          </select>
-        </label>
-        <label class="fld"><span>Wer füllt den Check aus?</span>
-          <select id="f-beziehung" name="beziehung">
-            <option value="">bitte wählen …</option>
-            <option value="elternteil">Elternteil</option>
-            <option value="grosseltern">Großeltern</option>
-            <option value="pate">Pate / Patin</option>
-            <option value="freund">Freund:in der Familie</option>
-            <option value="andere">andere</option>
-          </select>
-        </label>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BLOCK 2: 15 ALLTAGSMOMENTE ===== -->
-  <section class="block" id="items">
-    <div class="block-head"><span class="num">2</span><h2>15 Alltagsmomente</h2>
-      <span class="frage">Beobachtungen aus dem Familienalltag — kein Verhalten ist „schlecht", jedes hat eine starke Seite.</span></div>
-
-    <fieldset class="item" data-driver="S"><legend>Wenn euer Kind hinfällt oder etwas schiefgeht, sagt es schnell „ist nicht schlimm!" und macht weiter — auch wenn man ihm ansieht, dass es wehtut.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q01" id="q01-2" value="2"><label for="q01-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q01" id="q01-1" value="1"><label for="q01-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q01" id="q01-0" value="0"><label for="q01-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="P"><legend>Wenn beim Malen oder Basteln etwas nicht so wird wie gedacht (ein schiefer Strich, ein Klecks), fängt euer Kind lieber ganz von vorn an — oder mag es gar nicht mehr fertig machen.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q02" id="q02-2" value="2"><label for="q02-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q02" id="q02-1" value="1"><label for="q02-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q02" id="q02-0" value="0"><label for="q02-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="B"><legend>Euer Kind will mit allem ganz schnell fertig sein — in Ruhe zu Ende machen oder warten fällt ihm schwer.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q03" id="q03-2" value="2"><label for="q03-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q03" id="q03-1" value="1"><label for="q03-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q03" id="q03-0" value="0"><label for="q03-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="R"><legend>Beim Spielen oder bei Streit gibt euer Kind schnell nach — auch wenn es eigentlich etwas anderes wollte.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q04" id="q04-2" value="2"><label for="q04-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q04" id="q04-1" value="1"><label for="q04-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q04" id="q04-0" value="0"><label for="q04-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="A"><legend>Euer Kind macht sich Dinge gern schwerer als nötig — der einfache Weg fühlt sich für es an, als würde er nicht richtig zählen.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q05" id="q05-2" value="2"><label for="q05-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q05" id="q05-1" value="1"><label for="q05-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q05" id="q05-0" value="0"><label for="q05-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="P"><legend>Neues zeigt euer Kind erst her oder probiert es vor anderen, wenn es sicher ist, dass es schon richtig gut klappt.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q06" id="q06-2" value="2"><label for="q06-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q06" id="q06-1" value="1"><label for="q06-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q06" id="q06-0" value="0"><label for="q06-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="S"><legend>Euer Kind bittet nur ungern um Hilfe — lieber müht es sich allein ab, auch wenn etwas sichtbar zu schwer oder zu knifflig ist.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q07" id="q07-2" value="2"><label for="q07-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q07" id="q07-1" value="1"><label for="q07-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q07" id="q07-0" value="0"><label for="q07-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="R"><legend>Bevor euer Kind sich entscheidet (Spiel, Essen, Ausflug), schaut es erst, was die anderen wollen — und wünscht sich dann dasselbe.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q08" id="q08-2" value="2"><label for="q08-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q08" id="q08-1" value="1"><label for="q08-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q08" id="q08-0" value="0"><label for="q08-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="B"><legend>Beim Erzählen sprudeln die Wörter so schnell heraus, dass euer Kind sich verhaspelt oder andere unterbricht.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q09" id="q09-2" value="2"><label for="q09-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q09" id="q09-1" value="1"><label for="q09-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q09" id="q09-0" value="0"><label for="q09-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="A"><legend>Euer Kind stürzt sich mit riesigem Eifer in Dinge, verausgabt sich dabei — und ist kurz vor dem Ziel erschöpft oder mag nicht mehr.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q10" id="q10-2" value="2"><label for="q10-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q10" id="q10-1" value="1"><label for="q10-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q10" id="q10-0" value="0"><label for="q10-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="S"><legend>Traurig sein oder Weinen zeigt euer Kind ungern vor anderen; getröstet werden mag es am liebsten gar nicht oder nur heimlich.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q11" id="q11-2" value="2"><label for="q11-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q11" id="q11-1" value="1"><label for="q11-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q11" id="q11-0" value="0"><label for="q11-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="R"><legend>Wenn jemand in der Nähe traurig oder ärgerlich wirkt, bezieht euer Kind das auf sich und versucht sofort, es wiedergutzumachen oder besonders lieb zu sein.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q12" id="q12-2" value="2"><label for="q12-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q12" id="q12-1" value="1"><label for="q12-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q12" id="q12-0" value="0"><label for="q12-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="P"><legend>Über kleine eigene Fehler ärgert sich euer Kind noch lange — auch wenn sie sonst niemandem aufgefallen sind.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q13" id="q13-2" value="2"><label for="q13-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q13" id="q13-1" value="1"><label for="q13-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q13" id="q13-0" value="0"><label for="q13-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="B"><legend>Euer Kind saust durch Aufgaben und Spiele — unterwegs fällt etwas um, geht verloren oder wird übersprungen, Hauptsache schnell fertig.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q14" id="q14-2" value="2"><label for="q14-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q14" id="q14-1" value="1"><label for="q14-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q14" id="q14-0" value="0"><label for="q14-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-
-    <fieldset class="item" data-driver="A"><legend>„Ich hab mich so angestrengt!" ist für euer Kind wichtiger als das, was dabei herausgekommen ist — Anerkennung fürs Mühen zählt mehr als fürs Gelingen.</legend>
-      <div class="scale">
-        <span class="opt"><input type="radio" name="q15" id="q15-2" value="2"><label for="q15-2"><span class="v">oft</span><span class="sub">gehört zum Alltag</span></label></span>
-        <span class="opt"><input type="radio" name="q15" id="q15-1" value="1"><label for="q15-1"><span class="v">manchmal</span><span class="sub">kommt vor</span></label></span>
-        <span class="opt"><input type="radio" name="q15" id="q15-0" value="0"><label for="q15-0"><span class="v">selten</span><span class="sub">eigentlich nie</span></label></span>
-      </div>
-    </fieldset>
-  </section>
-
-  <!-- ===== BLOCK 3: INDIVIDUALISIERUNG ===== -->
-  <section class="block" id="individualisierung">
-    <div class="block-head"><span class="num">3</span><h2>So wird es euer Buch</h2>
-      <span class="frage">Euer Kind soll sich auf jeder Seite wiederfinden. Alles hier ist freiwillig — bewusst per Auswahl statt Foto-Upload, damit so wenig wie möglich über euer Kind erhoben wird.</span></div>
-
-    <div class="card">
-      <div class="fld-grid">
-        <label class="fld"><span>Vorname des Kindes</span>
-          <input type="text" id="f-name" name="kindname" autocomplete="off" placeholder="z. B. Mila">
-          <span class="hint">Erscheint im Buch — auf dem Namensschild, der Bude, dem Bett.</span>
-        </label>
-        <label class="fld"><span>Aussprache-Hinweis (optional)</span>
-          <input type="text" id="f-aussprache" name="aussprache" autocomplete="off" placeholder="z. B. „Mie-la&#8220;">
-        </label>
-      </div>
-
-      <div class="fld" style="margin-top:18px"><span>Held:in der Geschichte</span>
-        <div class="choice-row" id="held-row">
-          <span class="chip"><input type="radio" name="held" id="held-kind" value="kind" checked><label for="held-kind">ein Kind — wie eures</label></span>
-          <span class="chip"><input type="radio" name="held" id="held-tier" value="tier"><label for="held-tier">ein Tier</label></span>
-        </div>
-      </div>
-
-      <div id="merkmale-kind" class="fld-grid" style="margin-top:18px">
-        <label class="fld"><span>Hautton</span>
-          <select id="f-hautton"><option value="">bitte wählen …</option><option>hell</option><option>mittel</option><option>dunkel</option><option>sehr dunkel</option></select>
-        </label>
-        <label class="fld"><span>Haarfarbe</span>
-          <select id="f-haarfarbe"><option value="">bitte wählen …</option><option>blond</option><option>braun</option><option>schwarz</option><option>rot</option></select>
-        </label>
-        <label class="fld"><span>Frisur</span>
-          <select id="f-frisur"><option value="">bitte wählen …</option><option>kurz</option><option>lockig</option><option>lang</option><option>Zöpfe</option></select>
-        </label>
-        <label class="fld"><span>Brille / Hörgerät</span>
-          <select id="f-brille"><option value="">keins</option><option>Brille</option><option>Hörgerät</option><option>Brille und Hörgerät</option></select>
-        </label>
-        <label class="fld"><span>Lieblingsfarbe (Kleidung)</span>
-          <select id="f-farbe"><option value="">bitte wählen …</option><option>Rot</option><option>Gelb</option><option>Grün</option><option>Blau</option><option>Lila</option><option>Orange</option></select>
-        </label>
-      </div>
-
-      <div id="merkmale-tier" class="fld-grid" style="margin-top:18px">
-        <label class="fld"><span>Welches Tier?</span>
-          <select id="f-tierart"><option value="">bitte wählen …</option><option>kleiner Bär</option><option>kleiner Fuchs / kleine Füchsin</option><option>kleiner Hase</option><option>kleiner Waschbär</option></select>
-          <span class="hint">Nur relevant, wenn ein Tier die Hauptrolle spielt.</span>
-        </label>
-      </div>
-
-      <div class="fld-grid" style="margin-top:18px">
-        <label class="fld"><span>Wo spielt die Geschichte?</span>
-          <select id="f-setting"><option value="">bitte wählen …</option><option>in der Stadt</option><option>im Dorf</option><option>auf dem Land</option></select>
-        </label>
-        <label class="fld"><span>Wichtigste Bezugsperson im Buch</span>
-          <select id="f-bezug"><option value="">bitte wählen …</option><option>Mama</option><option>Papa</option><option>Oma</option><option>Opa</option><option>jemand anderes (im Bestell-Schritt angeben)</option></select>
-        </label>
-      </div>
-      <p style="margin-top:16px"><small>Buch-Details wie Kuscheltier-Art oder Lieblings-Vorbild fragen wir erst im Bestell-Schritt zum konkreten Buch — wir erheben nichts auf Vorrat.</small></p>
-    </div>
-  </section>
-
-  <!-- ===== BLOCK 4: FREITEXT ===== -->
-  <section class="block" id="freitext">
-    <div class="block-head"><span class="num">4</span><h2>Was beschäftigt euer Kind gerade?</h2>
-      <span class="frage">Freiwillig, in euren Worten — Einschulung, Geschwisterkind, ein Umzug, eine große Freude, eine kleine Sorge.</span></div>
-    <div class="card">
-      <label class="fld"><span>Erzählt frei (optional)</span>
-        <textarea id="f-beschaeftigt" name="beschaeftigt" placeholder="z. B. „Seit dem Umzug mag sie abends nicht mehr allein einschlafen …&#8220;"></textarea>
-        <span class="hint">Hilft uns, die Geschichte fein abzustimmen — und zeigt uns, welche Themen sich Familien als Nächstes wünschen. Auch dieser Text bleibt auf deinem Gerät, bis du den Bestell-Code selbst verschickst.</span>
-      </label>
-    </div>
-  </section>
-
-  <div class="no-print" style="text-align:center;margin:32px 0">
-    <button class="btn" id="eval-btn-2" type="button">Empfehlung anzeigen ↓</button>
-    <p class="js-only" id="eval-hint" style="margin-top:12px"><small>Offen gelassene Alltagsmomente zählen einfach nicht mit — ihr müsst nicht alles beantworten.</small></p>
+<!-- 4 · DIE BÜCHER -->
+<section id="buecher">
+<div class="spur">
+  <h2 style="font-size:var(--s2);margin-bottom:.6rem">Zehn Bücher, fünf Muster</h2>
+  <p>Jedes Muster zeigt sich an zwei Orten: wenn ihr zusammen seid — und am Bildschirm.
+  Dieselbe Sache, zwei Geschichten.</p>
+</div>
+<div class="flaeche" style="margin-top:2.4rem">
+  <div class="raster-kopf">
+    <div>Wenn wir zusammen sind</div>
+    <div>Wenn Geräte dabei sind</div>
   </div>
 
-  </form>
-
-  <!-- ===== ERGEBNIS ===== -->
-  <section id="ergebnis">
-    <h2>Eure Empfehlung</h2>
-
-    <p class="no-js-note callout">
-      <strong>Ohne JavaScript</strong> wird hier keine berechnete Empfehlung angezeigt — der Fragebogen oben bleibt vollständig lesbar. Aktiviere JavaScript, um die Buch-Empfehlung, die Übersicht über alle fünf Themen und den Bestell-Code zu sehen. Es wird auch mit JavaScript nichts gesendet: Die Auswertung läuft komplett in deinem Browser. Bestellen oder vormerken könnt ihr jederzeit auch direkt per E-Mail an <a href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay">jay@aivantum.com</a> — schreibt uns einfach, welches Buch euch interessiert.
-    </p>
-
-    <div class="js-only" id="ergebnis-live" hidden>
-      <div class="card accent-top" id="empfehlung-card">
-        <h3 id="emp-titel">Das Muster, das ihr gerade am häufigsten seht</h3>
-        <p id="emp-intro"></p>
-        <div id="emp-muster"></div>
-        <p id="emp-alter" style="margin-top:12px"></p>
-        <p style="margin-top:10px"><small>Zur Erinnerung: Das ist ein Muster, kein Etikett. Jedes Kind trägt alle fünf in sich — Bücher zu den anderen Themen findet ihr unten.</small></p>
-      </div>
-
-      <div class="card">
-        <h3>So verteilen sich die fünf Themen bei euch</h3>
-        <p><small>Je länger der Balken, desto häufiger habt ihr das Muster zuletzt beobachtet (0–6 Punkte je Thema).</small></p>
-        <div class="score-bars" id="score-bars"></div>
-      </div>
-
-      <div class="card">
-        <h3>Euer Bestell-Code</h3>
-        <p>Alles, was wir für euer Buch brauchen, zusammengefasst — <strong>er wurde noch nicht gesendet.</strong> Wenn ihr bestellen oder vormerken möchtet: tragt unten eure E-Mail-Adresse ein und sendet den Code direkt an uns — oder nutzt weiterhin euer eigenes Mail-Programm (<a href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay">jay@aivantum.com</a>). So behaltet ihr selbst in der Hand, was ihr teilt.</p>
-        <textarea id="code-out" readonly spellcheck="false" aria-label="Bestell-Code (JSON)"></textarea>
-        <div class="direct-send" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px">
-          <input type="email" id="send-email" inputmode="email" autocomplete="email" placeholder="eure@email.de" aria-label="Eure E-Mail-Adresse für die Bestellung" style="flex:1 1 220px;min-width:0;padding:10px 14px;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface);font:inherit">
-          <input type="text" id="send-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-          <button type="button" class="btn" id="send-btn" disabled aria-describedby="send-consent-hint">Direkt an uns senden</button>
-        </div>
-        <label for="send-consent" style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:.95em;line-height:1.45;cursor:pointer">
-          <input type="checkbox" id="send-consent" style="margin-top:4px;flex:0 0 auto;width:18px;height:18px">
-          <span id="send-consent-hint">Ja, ihr dürft den Bestell-Code (Vorname des Kindes, Alter, Aussehen inkl. eventueller Angaben zu Brille oder Hörgerät, Freitext) zusammen mit unserer E-Mail-Adresse über euren Übermittlungsdienst an jay@aivantum.com senden und zur Bearbeitung unserer Bestellung oder Vormerkung verarbeiten. Diese Einwilligung können wir jederzeit widerrufen (<a href="datenschutz.html#bestellung">Datenschutz, Abschnitt 4</a>). Ohne Häkchen bleibt der Weg über euer eigenes Mail-Programm.</span>
-        </label>
-        <p id="send-status" hidden style="margin-top:10px;font-weight:600"></p>
-        <div class="code-actions">
-          <a class="btn ghost" id="mail-btn" href="mailto:jay@aivantum.com?subject=Bestell-Code%20%C2%B7%20Du%20bist%20okay&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Hier%20ist%20unser%20Bestell-Code%3A%0A%0A(bitte%20hier%20den%20kopierten%20Bestell-Code%20einf%C3%BCgen)%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
-          <button type="button" class="btn ghost" id="copy-btn">Bestell-Code kopieren</button>
-          <span id="copy-ok">Kopiert ✓</span>
-        </div>
-        <p style="margin-top:12px"><small>„Direkt an uns senden" schickt den Code über unseren Server an uns — ihr bekommt sofort eine Bestätigung an eure Adresse. „Per eigenem Mail-Programm" öffnet stattdessen euren Mail-Entwurf; gesendet wird dort erst, wenn ihr auf Senden drückt. Der Code enthält nur Summen je Thema (nicht eure einzelnen Antworten), eure Auswahl und — falls ausgefüllt — den Freitext. Details: <a href="datenschutz.html">Datenschutz</a>.</small></p>
-      </div>
+  <div class="zeile">
+    <div class="muster-label"><b>Muster 1</b> Fehler dürfen nicht passieren</div>
+    <div class="paar">
+      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+        <span class="titel">Das Licht im Riss</span>
+        <span class="alter">Emil baut die perfekte Laterne — bis sie einreißt.</span>
+        <span class="kippe"><span class="muster">„Das geht noch besser.“</span><span class="gegen">„Fehler dürfen leuchten.“</span></span></article>
+      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="titel">Der Immerwisser</span>
+        <span class="alter">Die Maschine hat immer eine Antwort. Sofort.</span>
+        <span class="kippe"><span class="muster">„Der Helfer weiß es besser.“</span><span class="gegen">„Dein Kopf ist der Kapitän.“</span></span></article>
     </div>
+  </div>
 
-    <!-- Statisch, immer sichtbar -->
-    <div class="card">
-      <h3>Die Reihe „Du bist okay"</h3>
-      <ul>
-        <li><strong>Der unsichtbare Rucksack</strong> — für starke Kinder: „Du darfst fühlen und um Hilfe bitten." <span class="badge ok">verfügbar</span></li>
-        <li><strong>Das Licht im Riss</strong> — für genaue Kinder: „Du bist gut genug, so wie du bist." <span class="badge ok">verfügbar</span></li>
-        <li><strong>Für eifrige Kinder</strong> — „Du darfst es dir leicht machen — es darf gelingen." <span class="badge warn">in Arbeit — vormerken</span></li>
-        <li><strong>Für freundliche Kinder</strong> — „Du darfst dich selbst wichtig nehmen und Nein sagen." <span class="badge warn">in Arbeit — vormerken</span></li>
-        <li><strong>Für flinke Kinder</strong> — „Du darfst dir Zeit nehmen." <span class="badge warn">in Arbeit — vormerken</span></li>
-      </ul>
-      <p><small>Jedes Buch gibt es in zwei Altersfassungen (3–6 und 6–9+) — und jedes Exemplar ist ein Unikat: Name, Aussehen und Umgebung folgen eurer Auswahl oben.</small></p>
+  <div class="zeile">
+    <div class="muster-label"><b>Muster 2</b> Nein sagen geht nicht</div>
+    <div class="paar">
+      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+        <span class="titel">Die verschwundene Lieblingsfarbe</span>
+        <span class="alter">Paula sagt zu allem „Au ja“ — und ihr Grün wird blasser.</span>
+        <span class="kippe"><span class="muster">„Ich mache das schon.“</span><span class="gegen">„Ich darf Nein sagen.“</span></span></article>
+      <article class="buch"><span class="reihe">Du bist bereit · 8–10</span>
+        <span class="titel">Der Klingelstein</span>
+        <span class="alter">Alle haben eins. Nur eines nicht.</span>
+        <span class="kippe"><span class="muster">„Ohne gehöre ich nicht dazu.“</span><span class="gegen">„Ich gehöre durch das, was wir tun.“</span></span></article>
     </div>
+  </div>
 
-    <div class="card inv" id="cta">
-      <h3>Warum wir so wenig über euer Kind wissen wollen</h3>
-      <p>Kinderdaten sind die sensibelste Datenklasse, die es gibt. Deshalb ist diese Seite bewusst so gebaut, dass sie nichts sammeln <em>kann</em>: kein Server, kein Konto, kein Cookie, kein Foto-Upload. Was ihr uns anvertraut, entscheidet ihr — mit dem Bestell-Code, den ihr selbst verschickt. Das ist bei uns kein Kleingedrucktes, sondern das Produkt.</p>
+  <div class="zeile">
+    <div class="muster-label"><b>Muster 3</b> Kein Ende finden</div>
+    <div class="paar">
+      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+        <span class="titel">Die Zeit im Teig</span>
+        <span class="alter">Mira ist das schnellste Kind der Straße — und kommt nie an.</span>
+        <span class="kippe"><span class="muster">„Schnell, schnell.“</span><span class="gegen">„Manches wird nur mit Zeit fertig.“</span></span></article>
+      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="titel">Der Nimmerschluss</span>
+        <span class="alter">Aus „gleich“ werden vierzig Minuten. Jedes Mal.</span>
+        <span class="kippe"><span class="muster">„Nur noch eins.“</span><span class="gegen">„Ich darf selbst Schluss machen.“</span></span></article>
     </div>
-  </section>
+  </div>
 
-</main>
+  <div class="zeile">
+    <div class="muster-label"><b>Muster 4</b> Alles allein tragen</div>
+    <div class="paar">
+      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+        <span class="titel">Der unsichtbare Rucksack</span>
+        <span class="alter">Frieda ist die Stärkste. Und sagt zu allem: macht nichts.</span>
+        <span class="kippe"><span class="muster">„Ist nicht schlimm.“</span><span class="gegen">„Geteilte Steine sind leichter.“</span></span></article>
+      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="titel">Der Maschinenfreund</span>
+        <span class="alter">Der bequemste Freund: immer Zeit, nie Streit.</span>
+        <span class="kippe"><span class="muster">„Der hört mir immer zu.“</span><span class="gegen">„Ich weiß, wen ich rufe.“</span></span></article>
+    </div>
+  </div>
 
+  <div class="zeile">
+    <div class="muster-label"><b>Muster 5</b> Leicht zählt nicht</div>
+    <div class="paar">
+      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+        <span class="titel">Der Drachen und der Wind</span>
+        <span class="alter">Juna baut den prächtigsten Drachen. Er steigt nicht.</span>
+        <span class="kippe"><span class="muster">„Nur was schwer ist, zählt.“</span><span class="gegen">„Es darf gelingen.“</span></span></article>
+      <article class="buch entwurf"><span class="reihe">Du bist bereit · 7–10 · in Arbeit</span>
+        <span class="titel">Der Zettelweg</span>
+        <span class="alter">Verabreden geht nur über Erwachsene. Findet das Kind.</span>
+        <span class="kippe"><span class="muster">„Das machen die Großen.“</span><span class="gegen">„Verabreden kannst du.“</span></span></article>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 5 · DER CHECK -->
+<section class="check" id="check">
+<div class="spur">
+  <h2>Sechs Fragen</h2>
+  <p class="lead">Kein Test, keine Diagnose, keine richtigen Antworten. Wir suchen nur die
+  Geschichte, die gerade am besten andockt. Dauert zwei Minuten.</p>
+
+  <div id="fragen">
+    <div class="frage" data-muster="1">
+      <p class="txt">Wenn etwas nicht perfekt wird, fängt es lieber noch einmal von vorn an.</p>
+      <div class="skala" role="group" aria-label="Frage 1"></div>
+    </div>
+    <div class="frage" data-muster="2">
+      <p class="txt">Es sagt Ja — auch wenn man merkt, dass es eigentlich nicht will.</p>
+      <div class="skala" role="group" aria-label="Frage 2"></div>
+    </div>
+    <div class="frage" data-muster="3">
+      <p class="txt">Es macht alles im Laufschritt und bringt selten etwas zu Ende.</p>
+      <div class="skala" role="group" aria-label="Frage 3"></div>
+    </div>
+    <div class="frage" data-muster="4">
+      <p class="txt">Wenn es traurig ist, sagt es: „Ist nicht schlimm.“</p>
+      <div class="skala" role="group" aria-label="Frage 4"></div>
+    </div>
+    <div class="frage" data-muster="5">
+      <p class="txt">Was leicht geht, zählt für es nicht richtig.</p>
+      <div class="skala" role="group" aria-label="Frage 5"></div>
+    </div>
+    <div class="frage" data-ort="1">
+      <p class="txt">Und wo zeigt sich das am deutlichsten?</p>
+      <div class="skala" role="group" aria-label="Frage 6"></div>
+    </div>
+  </div>
+
+  <div id="ergebnis" hidden>
+    <h3>Eure Geschichte</h3>
+    <p class="treffer" id="treffer-titel"></p>
+    <p id="treffer-text"></p>
+    <p class="klein">Der Bestell-Code steht unten — ihr schickt ihn selbst ab.</p>
+  </div>
+
+  <p class="no-js-hinweis">Die sechs Fragen brauchen JavaScript. Ohne geht es genauso:
+  Alle zehn Bücher stehen oben mit ihrem Muster — such dir das aus, das euch bekannt vorkommt.</p>
+</div>
+</section>
+
+<!-- 6 · SO WIRD ES EUER BUCH -->
+<section class="prozess">
+<div class="spur">
+  <h2>So wird es euer Buch</h2>
+  <p>Euer Kind soll sich auf jeder Seite wiederfinden. Und trotzdem erheben wir so wenig wie
+  möglich über es. Deshalb gibt es <strong>keinen Foto-Upload</strong> — ihr wählt aus, wir zeichnen.</p>
+</div>
+<div class="flaeche">
+  <div class="schritte">
+    <div class="schritt"><span class="nr">1</span><h3>Der Name</h3>
+      <p class="klein">Der Vorname eures Kindes — er steht auf dem Namensschild, der Bude, dem Bett.
+      Auf Wunsch mit Aussprache-Hinweis.</p></div>
+    <div class="schritt"><span class="nr">2</span><h3>Wer die Hauptrolle spielt</h3>
+      <p class="klein">Ein Kind wie eures — oder ein Tier. Beides trägt die Geschichte.</p></div>
+    <div class="schritt"><span class="nr">3</span><h3>Das Aussehen</h3>
+      <p class="klein">Hautton, Haarfarbe, Frisur, Brille oder Hörgerät, Lieblingsfarbe.
+      Alles per Auswahl, nichts hochgeladen.</p></div>
+    <div class="schritt"><span class="nr">4</span><h3>Eure Welt</h3>
+      <p class="klein">Stadt, Dorf oder Land — und wer im Buch die wichtigste Bezugsperson ist.</p></div>
+  </div>
+  <p class="klein" style="margin-top:1.4rem;max-width:62ch">Alles davon ist freiwillig. Was ihr
+  auslasst, entscheiden wir so, dass es zur Geschichte passt.</p>
+</div>
+</section>
+
+<!-- 7 · DIE BESTELLUNG -->
+<section class="bestellung" id="bestellen">
+<div class="spur">
+  <h2>Bestellen</h2>
+  <p>Am Ende bekommt ihr einen <strong>Bestell-Code</strong> — eine Zeile, die alles enthält, was
+  wir brauchen. Den schickt ihr uns per Mail, aus eurem eigenen Programm.</p>
+  <div class="zusicherung">
+    <p style="margin:0"><strong>Von dieser Seite geht nichts weg.</strong> Alles, was ihr hier
+    anklickt, bleibt auf eurem Gerät. Keine Cookies, kein Tracking, kein Konto. Erst wenn ihr die
+    Mail selbst abschickt, verlässt etwas euren Browser. Bei Fragen zu einem Kind ist das für uns
+    keine Fußnote.</p>
+  </div>
+  <p style="margin-top:1.6rem">
+    <a class="knopf" href="mailto:jay@aivantum.com?subject=Bestellung%20%C2%B7%20Du%20bist%20okay">Mail schreiben</a>
+  </p>
+</div>
+</section>
+
+<!-- 8 · FUSS -->
 <footer>
-  <div class="wrap">
-    <p><strong style="color:var(--body-strong)">Du bist okay</strong> — personalisierte Kinderbücher, die Mut-Sätze schenken. Der Quick-Check ist eine Schenk-Hilfe, keine Diagnose. Alle Antworten bleiben auf deinem Gerät — gesendet wird nur, was ihr selbst abschickt, per eigenem Mail-Programm oder nach eurer Einwilligung per Direktversand. Details im <a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a>.</p>
-    <p>Bestellungen &amp; Fragen: <a href="mailto:jay@aivantum.com">jay@aivantum.com</a></p>
-  </div>
+<div class="flaeche cols">
+  <div><h3>Du bist okay · Du bist bereit</h3>
+    <p class="klein">Personalisierte Kinderbücher über Muster, die früh entstehen — und die Sätze,
+    die davon befreien. Geschrieben von Jay Manuzon.</p></div>
+  <div><h3>Rechtliches</h3>
+    <p class="klein"><a href="datenschutz.html">Datenschutz</a> ·
+    <a href="datenschutz.html#bestellung">Datenschutz bei Bestellungen</a> ·
+    <a href="impressum.html">Impressum</a></p></div>
+  <div><h3>Kontakt</h3>
+    <p class="klein"><a href="mailto:jay@aivantum.com">jay@aivantum.com</a></p></div>
+</div>
 </footer>
 
 <script>
 (function(){
   "use strict";
-  document.documentElement.className = "js";
-  var st = document.createElement("style");
-  st.textContent = ".js .js-only{display:block} .js .no-js-note{display:none}";
-  document.head.appendChild(st);
+  var SKALA = [["oft","2"],["manchmal","1"],["selten","0"]];
+  var ORTE  = [["Wenn wir zusammen sind","a"],["Wenn Geräte dabei sind","b"]];
 
-  // ---- Stammdaten der fünf Themen (Antreiber, kindgerecht-positiv gerahmt) ----
-  var THEMEN = {
-    P: { key:"sei_perfekt", name:"euer genaues Kind",
-         staerke:"Sorgfalt, Hingabe und ein besonderer Blick fürs Detail — euer Kind kann sich in Dinge vertiefen wie kaum jemand.",
-         muster:"Gerade scheint dazuzugehören: Es soll ganz genau richtig werden, sonst zählt es nicht.",
-         erlauber:"„Du bist gut genug, so wie du bist.“",
-         buch:"Das Licht im Riss", slug:"das-licht-im-riss", verfuegbar:true },
-    S: { key:"sei_stark", name:"euer starkes Kind",
-         staerke:"Anpacken, durchhalten, für andere da sein — auf euer Kind kann man sich verlassen.",
-         muster:"Gerade scheint dazuzugehören: Gefühle werden weggedrückt, Hilfe wird nicht gern angenommen.",
-         erlauber:"„Du darfst fühlen und um Hilfe bitten.“",
-         buch:"Der unsichtbare Rucksack", slug:"der-unsichtbare-rucksack", verfuegbar:true },
-    A: { key:"streng_dich_an", name:"euer eifriges Kind",
-         staerke:"Begeisterung, Einsatz und echtes Dranbleiben — euer Kind gibt nie halbherzig.",
-         muster:"Gerade scheint dazuzugehören: Die Mühe zählt mehr als das Gelingen, und der leichte Weg fühlt sich verboten an.",
-         erlauber:"„Du darfst es dir leicht machen — es darf gelingen.“",
-         buch:null, slug:"vormerkung-streng-dich-an", verfuegbar:false },
-    R: { key:"mach_es_allen_recht", name:"euer freundliches Kind",
-         staerke:"Mitgefühl, Rücksicht und feine Antennen für andere — mit eurem Kind fühlen sich alle wohl.",
-         muster:"Gerade scheint dazuzugehören: Die eigenen Wünsche kommen zuletzt, Hauptsache alle anderen sind zufrieden.",
-         erlauber:"„Du darfst dich selbst wichtig nehmen und Nein sagen.“",
-         buch:null, slug:"vormerkung-mach-es-allen-recht", verfuegbar:false },
-    B: { key:"beeil_dich", name:"euer flinkes Kind",
-         staerke:"Tempo, Schwung und Entscheidungsfreude — euer Kind bringt Bewegung in jeden Tag.",
-         muster:"Gerade scheint dazuzugehören: Alles muss sofort und schnell gehen, Warten und in Ruhe fertig machen fallen schwer.",
-         erlauber:"„Du darfst dir Zeit nehmen.“",
-         buch:null, slug:"vormerkung-beeil-dich", verfuegbar:false }
+  var BUCH = {
+    "1a":["Das Licht im Riss","Emil will alles genau richtig machen — bis die Laterne einreißt und trotzdem leuchtet. Für Kinder, bei denen ein Fehler den ganzen Tag kippt."],
+    "1b":["Der Immerwisser","Die Maschine hat immer sofort eine Antwort. Das Buch zeigt, dass sie rät — und dass der eigene Kopf der Kapitän bleibt."],
+    "2a":["Die verschwundene Lieblingsfarbe","Paula sagt zu allem Ja, bis ihre Farbe verschwindet. Für Kinder, die es allen recht machen und dabei selbst leiser werden."],
+    "2b":["Der Klingelstein","Alle haben eins, nur eines nicht. Das Buch löst Zugehörigkeit vom Gerät — ohne das Gerät zu verteufeln."],
+    "3a":["Die Zeit im Teig","Mira ist das schnellste Kind der Straße und kommt nie an. Beim Teig lernt sie, dass manches nur mit Zeit fertig wird."],
+    "3b":["Der Nimmerschluss","Aus „gleich“ werden vierzig Minuten, und das Ende kommt immer von außen. Hier lernt das Kind, selbst Schluss zu machen."],
+    "4a":["Der unsichtbare Rucksack","Frieda trägt alles allein und sagt zu allem „macht nichts“. Bis sie sieht, dass sogar die stärkste Feuerwehrfrau um Hilfe ruft."],
+    "4b":["Der Maschinenfreund","Der bequemste Freund: immer Zeit, nie Streit. Das Buch nimmt das Gefühl ernst und fügt eine Unterscheidung hinzu."],
+    "5a":["Der Drachen und der Wind","Juna baut den prächtigsten Drachen, und er steigt nicht. Für Kinder, bei denen nur zählt, was anstrengend war."],
+    "5b":["Der Zettelweg","Verabreden geht nur über Erwachsene — findet das Kind. Bis es merkt, dass es das selbst kann. (Erscheint bald.)"]
   };
-  var LABELS = { P:"Genau & sorgfältig", S:"Stark & tapfer", A:"Eifrig & fleißig", R:"Freundlich & bedacht", B:"Flink & schnell" };
 
-  // ---- Fortschritt ----
-  var items = document.querySelectorAll("fieldset.item");
-  var TOTAL = items.length; // 15
-  function answeredCount(){
-    var n = 0;
-    items.forEach(function(fs){ if (fs.querySelector("input:checked")) n++; });
-    return n;
-  }
-  function updateProgress(){
-    var n = answeredCount();
-    document.getElementById("progress-text").textContent = n + " / " + TOTAL + " beantwortet";
-    document.getElementById("progress-fill").style.width = (100*n/TOTAL) + "%";
-    document.getElementById("eval-btn").disabled = (n === 0);
-  }
-  items.forEach(function(fs){
-    fs.querySelectorAll("input[type=radio]").forEach(function(inp){
-      inp.addEventListener("change", updateProgress);
+  var antw = {}, ort = null;
+
+  function knopf(text, wert, gruppe, cb){
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = text;
+    b.setAttribute("aria-pressed","false");
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(gruppe.children, function(x){ x.setAttribute("aria-pressed","false"); });
+      b.setAttribute("aria-pressed","true");
+      cb(wert); rechne();
     });
-  });
-
-  // ---- Held-Wahl: Merkmals-Blöcke umschalten ----
-  var merkKind = document.getElementById("merkmale-kind");
-  var merkTier = document.getElementById("merkmale-tier");
-  function syncHeld(){
-    var tier = document.getElementById("held-tier").checked;
-    merkKind.style.display = tier ? "none" : "";
-    merkTier.style.display = tier ? "" : "none";
-  }
-  document.getElementById("held-kind").addEventListener("change", syncHeld);
-  document.getElementById("held-tier").addEventListener("change", syncHeld);
-  syncHeld();
-
-  // ---- Auswertung ----
-  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
-
-  function scores(){
-    var s = { P:0, S:0, A:0, R:0, B:0 };
-    items.forEach(function(fs){
-      var d = fs.getAttribute("data-driver");
-      var checked = fs.querySelector("input:checked");
-      if (checked) s[d] += parseInt(checked.value, 10);
-    });
-    return s;
+    return b;
   }
 
-  function altersvariante(){
-    var a = val("f-alter");
-    if (a === "3-6") return "3–6";
-    if (a === "6-9" || a === "ueber-9") return "6–9(+)";
-    return null;
-  }
-
-  function evaluate(){
-    var s = scores();
-    var keys = ["P","S","A","R","B"];
-    var max = 0;
-    keys.forEach(function(k){ if (s[k] > max) max = s[k]; });
-    var top = keys.filter(function(k){ return s[k] === max; });
-    var klar = max >= 2 && top.length < 5;
-
-    var name = val("f-name") || "euer Kind";
-    var intro = document.getElementById("emp-intro");
-    var box = document.getElementById("emp-muster");
-    box.innerHTML = "";
-
-    if (!klar){
-      document.getElementById("emp-titel").textContent = "Kein einzelnes Muster sticht heraus — und das ist völlig okay";
-      intro.textContent = "Aus euren Antworten zeigt sich gerade kein Thema besonders deutlich. Das ist kein Fehler: Viele Kinder wandern frei zwischen den Mustern. Schaut euch die fünf Bücher unten in Ruhe an und wählt das, das euch anlacht — der Bestell-Code unten funktioniert trotzdem.";
+  Array.prototype.forEach.call(document.querySelectorAll(".frage"), function(f){
+    var g = f.querySelector(".skala");
+    if (f.dataset.muster){
+      var m = f.dataset.muster;
+      SKALA.forEach(function(s){ g.appendChild(knopf(s[0], s[1], g, function(w){ antw[m] = +w; })); });
     } else {
-      document.getElementById("emp-titel").textContent = (top.length > 1)
-        ? "Zwei Muster zeigen sich gleich deutlich"
-        : "Das Muster, das ihr gerade am häufigsten seht";
-      intro.textContent = (top.length > 1)
-        ? "Bei " + name + " zeigen sich gerade mehrere Muster gleich stark — wir zeigen euch beide Empfehlungen, die Wahl liegt bei euch:"
-        : "So lesen wir eure Beobachtungen — immer zuerst als Stärke:";
-      top.forEach(function(k){
-        var t = THEMEN[k];
-        var div = document.createElement("div");
-        div.className = "muster-card";
-        var buchHtml = t.verfuegbar
-          ? '<div class="buch-zeile"><b>„' + t.buch + '“</b><span class="badge ok">verfügbar</span></div>'
-          : '<div class="buch-zeile"><b>Das passende Buch ist in Arbeit</b><span class="badge warn">vormerken</span></div>' +
-            '<p style="margin-top:8px"><small>Euer Bestell-Code enthält eine Vormerkung — ihr bekommt Bescheid, sobald es da ist. Bis dahin passen vielleicht „Der unsichtbare Rucksack“ oder „Das Licht im Riss“ (siehe Reihe unten).</small></p>';
-        div.innerHTML =
-          "<h4>" + t.name.charAt(0).toUpperCase() + t.name.slice(1) + "</h4>" +
-          "<p><strong>Die Stärke dahinter:</strong> " + t.staerke + "</p>" +
-          "<p>" + t.muster + " Genau dafür gibt es einen Mut-Satz:</p>" +
-          '<div class="erlauber">' + t.erlauber + "</div>" + buchHtml;
-        box.appendChild(div);
-      });
-    }
-
-    // Altersvariante
-    var av = altersvariante();
-    var altEl = document.getElementById("emp-alter");
-    if (av){
-      altEl.innerHTML = "<strong>Altersfassung:</strong> Nach eurer Angabe empfehlen wir die Variante <strong>" + av + "</strong>.";
-    } else if (val("f-alter") === "unter-3"){
-      altEl.innerHTML = "<strong>Altersfassung:</strong> Unsere Bücher beginnen bei 3 Jahren — gern könnt ihr per Bestell-Code vormerken, das Buch wächst eurem Kind entgegen.";
-    } else {
-      altEl.innerHTML = "<strong>Altersfassung:</strong> Wählt oben das Alter aus, dann ordnen wir die passende Variante (3–6 oder 6–9+) zu.";
-    }
-
-    // Balken
-    var bars = document.getElementById("score-bars");
-    bars.innerHTML = "";
-    keys.slice().sort(function(a,b){ return s[b] - s[a]; }).forEach(function(k){
-      var row = document.createElement("div");
-      row.className = "score-bar";
-      var pct = Math.round(100 * s[k] / 6);
-      row.innerHTML = '<span class="lbl">' + LABELS[k] + '</span>' +
-        '<span class="track"><i style="width:' + pct + '%"></i></span>' +
-        '<span class="val">' + s[k] + '</span>';
-      bars.appendChild(row);
-    });
-
-    // Bestell-Code (nur Summen, nie Einzel-Antworten)
-    var tier = document.getElementById("held-tier").checked;
-    var brille = val("f-brille");
-    var code = {
-      schema: "tomodachi-intake-v1",
-      erstellt: new Date().toISOString().slice(0,10),
-      kind: {
-        name: val("f-name") || null,
-        aussprache: val("f-aussprache") || null,
-        alter: val("f-alter") || null,
-        altersvariante: av
-      },
-      ausfuellend: val("f-beziehung") || null,
-      antreiber: {
-        scores: {
-          sei_perfekt: s.P, sei_stark: s.S, streng_dich_an: s.A,
-          mach_es_allen_recht: s.R, beeil_dich: s.B
-        },
-        top: klar ? top.map(function(k){ return THEMEN[k].key; }) : [],
-        buchempfehlung: klar ? top.map(function(k){ return THEMEN[k].slug; }) : [],
-        vormerkung: klar && top.some(function(k){ return !THEMEN[k].verfuegbar; })
-      },
-      individualisierung: {
-        held: tier ? "tier" : "kind",
-        tierart: tier ? (val("f-tierart") || null) : null,
-        hautton: tier ? null : (val("f-hautton") || null),
-        haarfarbe: tier ? null : (val("f-haarfarbe") || null),
-        frisur: tier ? null : (val("f-frisur") || null),
-        brille: brille.indexOf("Brille") >= 0,
-        hoergeraet: brille.indexOf("Hörgerät") >= 0,
-        lieblingsfarbe: tier ? null : (val("f-farbe") || null),
-        setting: val("f-setting") || null,
-        bezugsperson: val("f-bezug") || null
-      },
-      beschaeftigt_gerade: val("f-beschaeftigt") || null
-    };
-    var codeText = JSON.stringify(code, null, 2);
-    document.getElementById("code-out").value = codeText;
-
-    // Mail-Button: Bestell-Code in den mailto-Entwurf legen (Progressive Enhancement —
-    // ohne JS trägt der Link bereits Adresse, Betreff und einen Einfüge-Platzhalter).
-    var mailBtn = document.getElementById("mail-btn");
-    if (mailBtn){
-      mailBtn.href = "mailto:jay@aivantum.com?subject=" + encodeURIComponent("Bestell-Code · Du bist okay") +
-        "&body=" + encodeURIComponent("Hallo,\n\nwir möchten bestellen bzw. vormerken. Hier ist unser Bestell-Code:\n\n" + codeText + "\n\nViele Grüße");
-    }
-
-    document.getElementById("ergebnis-live").hidden = false;
-    document.getElementById("ergebnis").scrollIntoView({ behavior: "smooth" });
-  }
-
-  // ---- Direkt-Senden (Worker-Variante, 2026-07-07) ----
-  // Schickt den Bestell-Code ueber den aivantum-Worker (Resend-Mail-Relay) an uns
-  // und bestaetigt der Familie sofort per Mail. Mailto bleibt als eigener Weg bestehen.
-  // Einwilligung (2026-09-04, Präsenz-Audit): der Knopf ist erst nach dem Häkchen aktiv.
-  // Der Bestell-Code trägt Angaben über ein Kind (Name, Aussehen, ggf. Hörgerät) — die
-  // Übermittlung braucht eine ausdrückliche Einwilligung, nicht nur einen Klick.
-  var consentBox = document.getElementById("send-consent");
-  var sendBtnEl = document.getElementById("send-btn");
-  if (consentBox && sendBtnEl){
-    consentBox.addEventListener("change", function(){ sendBtnEl.disabled = !consentBox.checked; });
-  }
-  document.getElementById("send-btn").addEventListener("click", function(){
-    var btn = this;
-    var email = (document.getElementById("send-email").value || "").trim();
-    var status = document.getElementById("send-status");
-    var code = document.getElementById("code-out").value || "";
-    var show = function(msg, ok){
-      status.hidden = false;
-      status.textContent = msg;
-      status.style.color = ok ? "#2c6355" : "#b3422a";
-    };
-    if (!consentBox || !consentBox.checked){
-      show("Bitte setzt zuerst das Häkchen zur Einwilligung — oder nutzt den Weg über euer eigenes Mail-Programm.", false);
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      show("Bitte gebt eine g\u00fcltige E-Mail-Adresse ein \u2014 an sie schicken wir die Best\u00e4tigung.", false);
-      return;
-    }
-    if (!code.trim()){
-      show("Der Bestell-Code ist noch leer \u2014 bitte erst den Fragebogen oben ausf\u00fcllen.", false);
-      return;
-    }
-    btn.disabled = true; btn.textContent = "Wird gesendet \u2026";
-    fetch("https://aivantum-check.aivantum.workers.dev/kontakt", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        art: "tomodachi",
-        email: email,
-        code: code,
-        einwilligung: true,
-        einwilligung_zeit: new Date().toISOString(),
-        source: location.host + location.pathname,
-        website: document.getElementById("send-website").value
-      })
-    }).then(function(r){
-      if (r.ok){
-        btn.textContent = "Gesendet \u2713";
-        show("Angekommen! Eine Best\u00e4tigung ist unterwegs an " + email + ". Wir melden uns pers\u00f6nlich bei euch.", true);
-      } else {
-        btn.disabled = false; btn.textContent = "Direkt an uns senden";
-        show("Das hat gerade nicht geklappt. Nutzt bitte den Mail-Programm-Weg oder kopiert den Code.", false);
-      }
-    }).catch(function(){
-      btn.disabled = false; btn.textContent = "Direkt an uns senden";
-      show("Keine Verbindung. Nutzt bitte den Mail-Programm-Weg oder kopiert den Code.", false);
-    });
-  });
-
-  // ---- Copy-Button ----
-  document.getElementById("copy-btn").addEventListener("click", function(){
-    var ta = document.getElementById("code-out");
-    var ok = document.getElementById("copy-ok");
-    function done(){ ok.classList.add("show"); setTimeout(function(){ ok.classList.remove("show"); }, 2200); }
-    if (navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(ta.value).then(done, function(){
-        ta.select(); document.execCommand("copy"); done();
-      });
-    } else {
-      ta.select(); document.execCommand("copy"); done();
+      ORTE.forEach(function(o){ g.appendChild(knopf(o[0], o[1], g, function(w){ ort = w; })); });
     }
   });
 
-  document.getElementById("eval-btn").addEventListener("click", evaluate);
-  document.getElementById("eval-btn-2").addEventListener("click", evaluate);
-  updateProgress();
+  function rechne(){
+    var muster = Object.keys(antw);
+    if (muster.length < 5 || !ort) return;
+    var best = null, hoch = -1;
+    muster.forEach(function(m){ if (antw[m] > hoch){ hoch = antw[m]; best = m; } });
+    if (hoch === 0){ zeige("Klingt nach einem entspannten Kind.",
+      "Bei keinem der fünf Muster habt ihr „oft“ oder „manchmal“ gesagt. Dann sucht euch oben einfach die Geschichte aus, die euch am meisten anspricht — das ist völlig in Ordnung."); return; }
+    var b = BUCH[best + ort];
+    zeige(b[0], b[1]);
+  }
+
+  function zeige(titel, text){
+    var box = document.getElementById("ergebnis");
+    document.getElementById("treffer-titel").textContent = titel;
+    document.getElementById("treffer-text").textContent = text;
+    box.hidden = false;
+  }
+
+  // Das Motiv im Hero einmal ausführen, sobald es im Blick ist.
+  var hk = document.getElementById("hero-kippe");
+  if (hk && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting){ setTimeout(function(){ hk.classList.add("an"); }, 420); io.disconnect(); }
+    }, {threshold:.6});
+    io.observe(hk);
+  } else if (hk){ hk.classList.add("an"); }
 })();
 </script>
+
 </body>
 </html>
