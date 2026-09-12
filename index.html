@@ -138,6 +138,8 @@ a{color:var(--holz-tief)}
 .check .lead{color:#d8cbb8;max-width:52ch}
 .frage{border-top:1px solid rgba(255,253,247,.16);padding-block:1.5rem}
 .frage:last-of-type{border-bottom:1px solid rgba(255,253,247,.16)}
+.frage.vorschalt{border-top:none;padding-top:.4rem}
+.frage .vorab{font-size:var(--s-1);letter-spacing:.14em;text-transform:uppercase;color:#9fd6a8;font-weight:700;margin-bottom:.35rem}
 .frage .txt{font-family:var(--fd);font-size:var(--s1);line-height:1.22;margin-bottom:.9rem;max-width:40ch}
 .skala{display:flex;gap:.5rem;flex-wrap:wrap}
 .skala button{background:transparent;color:#d8cbb8;border:1.5px solid rgba(255,253,247,.28);
@@ -227,27 +229,18 @@ footer .klein,.check .klein{color:#bdb0a0}
 <!-- 3 · DIE WEICHE -->
 <section class="weiche" id="weiche">
 <div class="spur">
-  <h2>Zwei Wege zum Buch</h2>
-  <p class="klein">Ihr wisst schon, worum es geht? Dann gleich zu den Büchern. Und wenn nicht,
-  schauen wir zusammen.</p>
-</div>
-<div class="flaeche">
-  <div class="wege">
-    <div class="weg">
-      <h3>Ein Buch, das es gibt</h3>
-      <span class="preis">ab 16,90 €</span>
-      <p>Zehn Geschichten, jede zu einem Muster. Mit dem Namen eures Kindes und in einer von
-      mehreren Grundvarianten — das reicht den meisten völlig.</p>
-      <a class="knopf leise" href="#buecher">Zu den Büchern</a>
-    </div>
-    <div class="weg">
-      <h3>Ein Buch für euer Kind</h3>
-      <span class="preis">+ 5,00 €</span>
-      <p>Sechs kurze Fragen, dann wissen wir, welches Muster bei euch gerade dran ist — und die
-      Geschichte wird auf euer Kind zugeschnitten: Name, Aussehen, eure Welt.</p>
-      <a class="knopf" href="#check">Die sechs Fragen</a>
-    </div>
-  </div>
+  <h2>So findet ihr das passende Buch</h2>
+  <p>Sechs Fragen, zwei Minuten. Danach wissen wir, welches Muster bei euch gerade dran ist — und
+  welche der zehn Geschichten am besten andockt.</p>
+  <p class="klein"><strong>Die Fragen kosten nichts</strong> und gehören zu jedem Buch dazu.
+  Sie sind der Grund, warum das Buch passt.</p>
+  <p style="margin-top:1.6rem">
+    <a class="knopf" href="#check">Die sechs Fragen beantworten</a>
+  </p>
+  <p class="klein" style="margin-top:1.1rem">
+    Lieber selbst schauen? <a href="#buecher">Weiter ohne Empfehlung</a> — alle zehn Bücher stehen
+    unten mit ihrem Muster.
+  </p>
 </div>
 </section>
 
@@ -341,27 +334,34 @@ footer .klein,.check .klein{color:#bdb0a0}
 <div class="spur">
   <h2>Sechs Fragen</h2>
   <p class="lead">Kein Test, keine Diagnose, keine richtigen Antworten. Wir suchen nur die
-  Geschichte, die gerade am besten andockt. Dauert zwei Minuten.</p>
+  Geschichte, die gerade am besten andockt. Fünf Fragen zum Kind, eine dazu, wo es sich zeigt.
+  Dauert zwei Minuten.</p>
+
+  <div class="frage vorschalt" id="frage0">
+    <p class="vorab">Bevor wir anfangen</p>
+    <p class="txt">Für wen sucht ihr?</p>
+    <div class="skala" role="group" aria-label="Frage 0"></div>
+  </div>
 
   <div id="fragen">
     <div class="frage" data-muster="1">
-      <p class="txt">Wenn etwas nicht perfekt wird, fängt es lieber noch einmal von vorn an.</p>
+      <p class="txt">Wenn etwas nicht perfekt wird, fängt das Kind lieber noch einmal von vorn an.</p>
       <div class="skala" role="group" aria-label="Frage 1"></div>
     </div>
     <div class="frage" data-muster="2">
-      <p class="txt">Es sagt Ja — auch wenn man merkt, dass es eigentlich nicht will.</p>
+      <p class="txt">Das Kind sagt Ja — auch wenn man merkt, dass es eigentlich nicht will.</p>
       <div class="skala" role="group" aria-label="Frage 2"></div>
     </div>
     <div class="frage" data-muster="3">
-      <p class="txt">Es macht alles im Laufschritt und bringt selten etwas zu Ende.</p>
+      <p class="txt">Das Kind macht alles im Laufschritt und bringt selten etwas zu Ende.</p>
       <div class="skala" role="group" aria-label="Frage 3"></div>
     </div>
     <div class="frage" data-muster="4">
-      <p class="txt">Wenn es traurig ist, sagt es: „Ist nicht schlimm.“</p>
+      <p class="txt">Wenn das Kind traurig ist, heißt es: „Ist nicht schlimm.“</p>
       <div class="skala" role="group" aria-label="Frage 4"></div>
     </div>
     <div class="frage" data-muster="5">
-      <p class="txt">Was leicht geht, zählt für es nicht richtig.</p>
+      <p class="txt">Was dem Kind leichtfällt, zählt für es nicht richtig.</p>
       <div class="skala" role="group" aria-label="Frage 5"></div>
     </div>
     <div class="frage" data-ort="1">
@@ -374,7 +374,8 @@ footer .klein,.check .klein{color:#bdb0a0}
     <h3>Eure Geschichte</h3>
     <p class="treffer" id="treffer-titel"></p>
     <p id="treffer-text"></p>
-    <p class="klein">Der Bestell-Code steht unten — ihr schickt ihn selbst ab.</p>
+    <p class="klein">Dieses Buch gibt es fertig — oder <strong>auf euer Kind zugeschnitten</strong>
+    mit Name, Aussehen und eurer Welt, für 5,00 € mehr. Beides über den Bestell-Code unten.</p>
   </div>
 
   <p class="no-js-hinweis">Die sechs Fragen brauchen JavaScript. Ohne geht es genauso:
@@ -445,6 +446,26 @@ footer .klein,.check .klein{color:#bdb0a0}
   "use strict";
   var SKALA = [["oft","2"],["manchmal","1"],["selten","0"]];
   var ORTE  = [["Wenn wir zusammen sind","a"],["Wenn Geräte dabei sind","b"]];
+  var WER   = [["ein Mädchen","sie"],["einen Jungen","er"],["geschlechterneutral","neutral"]];
+
+  // Dieselben fünf Fragen, in der Anrede, die zum Kind passt.
+  var FRAGEN = {
+    sie:[ "Wenn etwas nicht perfekt wird, fängt sie lieber noch einmal von vorn an.",
+          "Sie sagt Ja — auch wenn man merkt, dass sie eigentlich nicht will.",
+          "Sie macht alles im Laufschritt und bringt selten etwas zu Ende.",
+          "Wenn sie traurig ist, sagt sie: „Ist nicht schlimm.“",
+          "Was ihr leichtfällt, zählt für sie nicht richtig." ],
+    er:[  "Wenn etwas nicht perfekt wird, fängt er lieber noch einmal von vorn an.",
+          "Er sagt Ja — auch wenn man merkt, dass er eigentlich nicht will.",
+          "Er macht alles im Laufschritt und bringt selten etwas zu Ende.",
+          "Wenn er traurig ist, sagt er: „Ist nicht schlimm.“",
+          "Was ihm leichtfällt, zählt für ihn nicht richtig." ],
+    neutral:[ "Wenn etwas nicht perfekt wird, fängt das Kind lieber noch einmal von vorn an.",
+          "Das Kind sagt Ja — auch wenn man merkt, dass es eigentlich nicht will.",
+          "Das Kind macht alles im Laufschritt und bringt selten etwas zu Ende.",
+          "Wenn das Kind traurig ist, heißt es: „Ist nicht schlimm.“",
+          "Was dem Kind leichtfällt, zählt für es nicht richtig." ]
+  };
 
   var BUCH = {
     "1a":["Das Licht im Riss","Emil will alles genau richtig machen — bis die Laterne einreißt und trotzdem leuchtet. Für Kinder, bei denen ein Fehler den ganzen Tag kippt."],
@@ -473,7 +494,17 @@ footer .klein,.check .klein{color:#bdb0a0}
     return b;
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll(".frage"), function(f){
+  var g0 = document.querySelector("#frage0 .skala");
+  WER.forEach(function(w){
+    g0.appendChild(knopf(w[0], w[1], g0, function(v){
+      var texte = FRAGEN[v] || FRAGEN.neutral;
+      document.querySelectorAll("#fragen .frage[data-muster] .txt").forEach(function(el, i){
+        if (texte[i]) el.textContent = texte[i];
+      });
+    }));
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("#fragen .frage"), function(f){
     var g = f.querySelector(".skala");
     if (f.dataset.muster){
       var m = f.dataset.muster;
