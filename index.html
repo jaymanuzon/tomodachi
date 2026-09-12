@@ -196,6 +196,7 @@ footer .klein,.check .klein{color:#bdb0a0}
 .ausgabe .preis{font-weight:700;color:var(--holz-tief)}
 .ausgabe .klein{margin:0}
 .js #zuschnitt.zu{display:none}
+.js .no-js-hinweis{display:none}
 .luecke{font-family:var(--fd);font-size:var(--s1);line-height:1.5;color:var(--tinte-2)}
 .luecke input{font:inherit;font-size:1em;font-family:var(--fd);color:var(--tinte);background:transparent;border:0;
   border-bottom:2px solid var(--holz);padding:0 .3rem;width:min(100%,16ch);min-width:8ch}
@@ -516,8 +517,9 @@ button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
           <span class="klein">Name, Aussehen und eure Welt in der Geschichte — und ganz vorn eine Seite,
           die nur euer Kind bekommt.</span></label>
       </div>
-      <p class="klein" style="margin:1rem 0 0">Versand und Lieferzeit stehen in unserer Antwort-Mail — jedes
-      zugeschnittene Buch wird einzeln gedruckt.</p>
+      <p class="klein" style="margin:1rem 0 0">Endpreise — als Kleinunternehmer nach § 19 UStG weisen wir keine
+      Umsatzsteuer aus. Versandkosten und Lieferzeit nennen wir in unserer Antwort-Mail, bevor ihr etwas bezahlt;
+      jedes zugeschnittene Buch wird einzeln gedruckt.</p>
     </fieldset>
 
     <div id="zuschnitt" class="zu">
@@ -590,13 +592,16 @@ button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
       <div class="f" style="margin-top:1rem"><span>Euer Bestell-Code</span>
         <textarea class="code-box" id="b-code" readonly spellcheck="false">Der Bestell-Code entsteht hier, sobald ihr oben etwas ausgewählt habt. Ohne JavaScript: schreibt uns einfach, welches Buch und welche Ausgabe ihr möchtet.</textarea></div>
       <label class="einwilligung"><input type="checkbox" id="b-einwilligung">
-        <span>Ja, ihr dürft den Bestell-Code (Buch, Ausgabe, Vorname des Kindes, Angaben zum Aussehen inkl. eventueller
-        Angaben zu Brille oder Hörgerät, den Text der ersten Seite, Freitext) zusammen mit unserer E-Mail-Adresse
-        über euren Übermittlungsdienst an jay@aivantum.com senden und zur Bearbeitung unserer Bestellung oder
-        Vormerkung verarbeiten. Diese Einwilligung können wir jederzeit widerrufen
+        <span>Ja, ihr dürft den Bestell-Code — Buch und Ausgabe, das Ergebnis der sechs Fragen (welches Muster,
+        welcher Ort), Vorname, Anrede und Aussprache-Hinweis des Kindes, Angaben zum Aussehen, eure Welt und
+        Bezugsperson, den Text der ersten Seite und den Freitext — zusammen mit unserer E-Mail-Adresse über euren
+        Übermittlungsdienst an jay@aivantum.com senden und zur Bearbeitung unserer Bestellung oder Vormerkung
+        verarbeiten. <strong>Die Angabe „Hörgerät“ ist eine Gesundheitsangabe; wir willigen ausdrücklich ein, dass
+        ihr sie dafür verarbeitet.</strong> Zum Nachweis speichert ihr Zeitpunkt und IP-Adresse dieser Einwilligung
+        mit der Bestell-Mail. Diese Einwilligung können wir jederzeit widerrufen
         (<a href="datenschutz.html#bestellung">Datenschutz, Abschnitt 4</a>). Ohne Häkchen bleibt der Weg über
         euer eigenes Mail-Programm.</span></label>
-      <input class="honig" type="text" id="b-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input class="honig" type="text" id="b-website" name="hp-feld" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="knoepfe">
         <button type="button" class="knopf" id="b-senden" disabled>Direkt an uns senden</button>
         <a class="knopf leise" id="b-mail" href="mailto:jay@aivantum.com?subject=Bestellung%20%C2%B7%20Du%20bist%20okay&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Buch%3A%20%E2%80%A6%20Ausgabe%3A%20%E2%80%A6%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
@@ -711,12 +716,19 @@ button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
   function rechne(){
     var muster = Object.keys(antw);
     if (muster.length < 5 || !ort) return;
-    var best = null, hoch = -1;
-    muster.forEach(function(m){ if (antw[m] > hoch){ hoch = antw[m]; best = m; } });
+    var hoch = Math.max.apply(null, muster.map(function(m){ return antw[m]; }));
     if (hoch === 0){ treffer = null; zeige("Klingt nach einem entspannten Kind.",
       "Bei keinem der fünf Muster habt ihr „oft“ oder „manchmal“ gesagt. Dann sucht euch oben einfach die Geschichte aus, die euch am meisten anspricht — das ist völlig in Ordnung.", null); return; }
-    var b = BUCH[best + ort];
-    treffer = { muster: best, ort: ort, slug: b[2] };
+    var gleich = muster.filter(function(m){ return antw[m] === hoch; });
+    var b = BUCH[gleich[0] + ort];
+    treffer = { muster: gleich[0], ort: ort, slug: b[2] };
+    if (gleich.length > 1){
+      // Gleichstand ehrlich zeigen: jedes Muster hat sein Buch, die Eltern wählen.
+      var titel = gleich.map(function(m){ return BUCH[m + ort][0]; });
+      zeige(titel.join(" · "), "Zwei Geschichten docken bei euch gleich gut an: " + titel.join(" und ") +
+        ". Nehmt die, bei der ihr beim Lesen der Zeile oben genickt habt — falsch ist keine. Unten könnt ihr beide bestellen.", b[2]);
+      return;
+    }
     zeige(b[0], b[1], b[2]);
   }
 
@@ -829,7 +841,7 @@ button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
       buch: { slug: slug, titel: info.titel, reihe: info.reihe, lieferbar: info.lieferbar },
       ausgabe: ausgabe,
       preis_eur: info.lieferbar ? PREIS[ausgabe] : null,
-      check: treffer ? { muster: treffer.muster, ort: treffer.ort } : null,
+      check: treffer ? { muster: treffer.muster, ort: treffer.ort, gefolgt: treffer.slug === slug } : null,
       kind: { name: zu ? name : null, anrede: anr, aussprache: zu ? (val("k-aussprache") || null) : null },
       widmung: zu ? { merkmal: val("w-merkmal"), schenker: val("w-schenker"),
                       text: widmungText(anr, name, val("w-merkmal"), val("w-schenker")) } : null,
@@ -876,9 +888,11 @@ button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify({ art: "tomodachi", email: email, code: code, einwilligung: true,
           einwilligung_zeit: new Date().toISOString(), source: location.host + location.pathname, website: val("b-website") })
-      }).then(function(r){
-        if (r.ok){ sendBtn.textContent = "Gesendet ✓"; melde("Angekommen! Eine Bestätigung ist unterwegs an " + email + ". Wir melden uns persönlich bei euch.", true); }
-        else { sendBtn.disabled = false; sendBtn.textContent = "Direkt an uns senden"; melde("Das hat gerade nicht geklappt. Nutzt bitte den Weg über euer Mail-Programm oder kopiert den Code.", false); }
+      }).then(function(r){ return r.ok ? r.json().catch(function(){ return {}; }) : { ok: false }; })
+      .then(function(d){
+        // "Angekommen" heißt: die Bestell-Mail an uns ist wirklich raus (leadMail), nicht nur "der Server hat geantwortet".
+        if (d && d.ok && d.leadMail === true){ sendBtn.textContent = "Gesendet ✓"; melde("Angekommen! Eine Bestätigung ist unterwegs an " + email + ". Wir melden uns persönlich bei euch.", true); }
+        else { sendBtn.disabled = false; sendBtn.textContent = "Direkt an uns senden"; melde("Das hat gerade nicht geklappt — bei uns ist nichts angekommen. Nutzt bitte den Weg über euer Mail-Programm oder kopiert den Code.", false); }
       }).catch(function(){ sendBtn.disabled = false; sendBtn.textContent = "Direkt an uns senden"; melde("Keine Verbindung. Nutzt bitte den Weg über euer Mail-Programm oder kopiert den Code.", false); });
     });
 
