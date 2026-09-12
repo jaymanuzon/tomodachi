@@ -169,6 +169,64 @@ footer a{color:#d8cbb8}
 footer .cols{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 footer .klein,.check .klein{color:#bdb0a0}
 
+/* ---------- Bestellung: Formular, Ausgaben, die erste Seite ---------- */
+.bestellung .lead{max-width:56ch}
+.formular{margin-top:2rem;display:grid;gap:1.4rem}
+.feld{border:1px solid var(--linie);border-radius:16px;background:var(--kreide);padding:1.4rem 1.5rem 1.5rem;margin:0;min-width:0}
+.feld legend{font-family:var(--fd);font-size:var(--s1);font-weight:600;padding:0 .4rem;color:var(--tinte)}
+.feld .hinweis{font-size:var(--s-1);color:var(--tinte-2);margin:-.2rem 0 1rem}
+.reihe-2{display:grid;gap:.9rem 1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.f{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.f>span{font-size:var(--s-1);font-weight:700;color:var(--tinte-2)}
+.f input[type=text],.f input[type=email],.f select,.f textarea{font:inherit;font-size:var(--s0);color:var(--tinte);
+  background:var(--papier);border:1.5px solid var(--linie);border-radius:10px;padding:.62rem .8rem;width:100%;min-width:0}
+.f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--moos);outline-offset:1px;border-color:var(--moos)}
+.f textarea{min-height:5.5rem;resize:vertical}
+.wahl{display:flex;gap:.5rem;flex-wrap:wrap}
+.wahl label{border:1.5px solid var(--linie);border-radius:999px;padding:.45rem 1rem;cursor:pointer;font-size:var(--s-1);
+  background:var(--papier);transition:background .15s,border-color .15s}
+.wahl label:has(input:checked){background:var(--moos);border-color:var(--moos);color:#fff;font-weight:700}
+.wahl input{position:absolute;opacity:0;width:1px;height:1px}
+.ausgaben{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.ausgabe{position:relative;display:flex;flex-direction:column;gap:.35rem;border:1.5px solid var(--linie);border-radius:14px;
+  padding:1.1rem 1.2rem;cursor:pointer;background:var(--papier);transition:border-color .15s,box-shadow .15s}
+.ausgabe:has(input:checked){border-color:var(--moos);box-shadow:0 0 0 3px var(--moos-hell)}
+.ausgabe input{position:absolute;opacity:0;width:1px;height:1px}
+.ausgabe .t{font-family:var(--fd);font-size:var(--s1);line-height:1.1}
+.ausgabe .preis{font-weight:700;color:var(--holz-tief)}
+.ausgabe .klein{margin:0}
+.js #zuschnitt.zu{display:none}
+.luecke{font-family:var(--fd);font-size:var(--s1);line-height:1.5;color:var(--tinte-2)}
+.luecke input{font:inherit;font-size:1em;font-family:var(--fd);color:var(--tinte);background:transparent;border:0;
+  border-bottom:2px solid var(--holz);padding:0 .3rem;width:min(100%,16ch);min-width:8ch}
+.luecke input:focus{outline:none;border-bottom-color:var(--moos)}
+.blatt-rahmen{margin-top:1.4rem}
+.blatt-rahmen .vorab{font-size:var(--s-1);letter-spacing:.14em;text-transform:uppercase;color:var(--holz);font-weight:700;margin-bottom:.6rem}
+.blatt{background:#fff;border:1px solid var(--linie);border-radius:6px;box-shadow:0 2px 3px rgba(36,29,22,.05),0 22px 40px -28px rgba(36,29,22,.45);
+  padding:clamp(1.6rem,1rem + 4vw,3rem) clamp(1.2rem,.6rem + 4vw,2.6rem);max-width:30rem;margin-inline:auto;aspect-ratio:1/1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--fd);color:var(--tinte);line-height:1.6;font-size:clamp(1rem,.9rem + .6vw,1.25rem)}
+.blatt .strich{width:2.6rem;height:3px;border-radius:2px;background:var(--holz);margin:.6rem auto .9rem}
+.blatt p{margin:0 0 .5em}
+.blatt .gruss{color:var(--holz-tief);font-style:italic;margin-top:.4em}
+.blatt .leer{color:#b9ad9c}
+.code-box{font:.86rem/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--papier);border:1.5px solid var(--linie);
+  border-radius:10px;padding:.8rem;width:100%;min-height:9rem;resize:vertical;color:var(--tinte-2)}
+.knoepfe{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
+button.knopf{border:0;cursor:pointer;font-family:inherit}
+button.knopf:disabled{background:#c9bfae;cursor:not-allowed}
+.einwilligung{display:flex;gap:.7rem;align-items:flex-start;font-size:var(--s-1);color:var(--tinte-2);margin-top:1.2rem}
+.einwilligung input{margin-top:.25rem;width:18px;height:18px;flex:0 0 auto}
+.status{margin-top:.8rem;font-weight:700}
+.status.ok{color:#2c6355}.status.nein{color:var(--rot)}
+.honig{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip:rect(0 0 0 0);pointer-events:none}
+.buch .aktion{margin-top:auto;padding-top:.5rem;font-size:var(--s-1);font-weight:700;color:var(--holz-tief);text-decoration:none}
+.buch .aktion:hover{text-decoration:underline}
+.buch.bald{background:var(--papier-2);border-style:dashed}
+.buch.bald .aktion{color:var(--tinte-2)}
+#ergebnis .knopf{margin-top:.6rem}
+#ergebnis .preise{color:#d8cbb8;font-size:var(--s-1)}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -177,6 +235,7 @@ footer .klein,.check .klein{color:#bdb0a0}
 }
 @media (max-width:620px){
   .raster-kopf{grid-template-columns:1fr;position:static}
+  .reihe-2{grid-template-columns:1fr}
   .raster-kopf div:last-child{margin-top:.4rem}
   .paar{grid-template-columns:1fr}
   .zeile{border-bottom:1px solid var(--linie);padding-bottom:1.3rem}
@@ -189,6 +248,7 @@ footer .klein,.check .klein{color:#bdb0a0}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
 
 <!-- 1 · HERO -->
 <section class="hero">
@@ -233,7 +293,8 @@ footer .klein,.check .klein{color:#bdb0a0}
   <p>Sechs Fragen, zwei Minuten. Danach wissen wir, welches Muster bei euch gerade dran ist — und
   welche der zehn Geschichten am besten andockt.</p>
   <p class="klein"><strong>Die Fragen kosten nichts</strong> und gehören zu jedem Buch dazu.
-  Sie sind der Grund, warum das Buch passt.</p>
+  Sie sind der Grund, warum das Buch passt. Das Buch selbst gibt es fertig für <strong>16,90 €</strong>
+  — oder auf euer Kind zugeschnitten für <strong>5,00 € mehr</strong>.</p>
   <p style="margin-top:1.6rem">
     <a class="knopf" href="#check">Die sechs Fragen beantworten</a>
   </p>
@@ -260,70 +321,70 @@ footer .klein,.check .klein{color:#bdb0a0}
   <div class="zeile">
     <div class="muster-label"><b>Muster 1</b> Fehler dürfen nicht passieren</div>
     <div class="paar">
-      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+      <article class="buch" data-slug="licht-im-riss"><span class="reihe">Du bist okay · 3–8</span>
         <span class="titel">Das Licht im Riss</span>
         <span class="alter">Emil baut die perfekte Laterne — bis sie einreißt.</span>
-        <span class="kippe"><span class="muster">„Das geht noch besser.“</span><span class="gegen">„Fehler dürfen leuchten.“</span></span></article>
-      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="kippe"><span class="muster">„Das geht noch besser.“</span><span class="gegen">„Fehler dürfen leuchten.“</span></span><a class="aktion" href="#bestellen" data-bestellen="licht-im-riss">Bestellen · 16,90 €</a></article>
+      <article class="buch bald" data-slug="immerwisser"><span class="reihe">Du bist bereit · 6–9 · erscheint bald</span>
         <span class="titel">Der Immerwisser</span>
         <span class="alter">Die Maschine hat immer eine Antwort. Sofort.</span>
-        <span class="kippe"><span class="muster">„Der Helfer weiß es besser.“</span><span class="gegen">„Dein Kopf ist der Kapitän.“</span></span></article>
+        <span class="kippe"><span class="muster">„Der Helfer weiß es besser.“</span><span class="gegen">„Dein Kopf ist der Kapitän.“</span></span><a class="aktion" href="#bestellen" data-bestellen="immerwisser">Vormerken · kostet nichts</a></article>
     </div>
   </div>
 
   <div class="zeile">
     <div class="muster-label"><b>Muster 2</b> Nein sagen geht nicht</div>
     <div class="paar">
-      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+      <article class="buch" data-slug="lieblingsfarbe"><span class="reihe">Du bist okay · 3–8</span>
         <span class="titel">Die verschwundene Lieblingsfarbe</span>
         <span class="alter">Paula sagt zu allem „Au ja“ — und ihr Grün wird blasser.</span>
-        <span class="kippe"><span class="muster">„Ich mache das schon.“</span><span class="gegen">„Ich darf Nein sagen.“</span></span></article>
-      <article class="buch"><span class="reihe">Du bist bereit · 8–10</span>
+        <span class="kippe"><span class="muster">„Ich mache das schon.“</span><span class="gegen">„Ich darf Nein sagen.“</span></span><a class="aktion" href="#bestellen" data-bestellen="lieblingsfarbe">Bestellen · 16,90 €</a></article>
+      <article class="buch bald" data-slug="klingelstein"><span class="reihe">Du bist bereit · 8–10 · erscheint bald</span>
         <span class="titel">Der Klingelstein</span>
         <span class="alter">Alle haben eins. Nur eines nicht.</span>
-        <span class="kippe"><span class="muster">„Ohne gehöre ich nicht dazu.“</span><span class="gegen">„Ich gehöre durch das, was wir tun.“</span></span></article>
+        <span class="kippe"><span class="muster">„Ohne gehöre ich nicht dazu.“</span><span class="gegen">„Ich gehöre durch das, was wir tun.“</span></span><a class="aktion" href="#bestellen" data-bestellen="klingelstein">Vormerken · kostet nichts</a></article>
     </div>
   </div>
 
   <div class="zeile">
     <div class="muster-label"><b>Muster 3</b> Kein Ende finden</div>
     <div class="paar">
-      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+      <article class="buch" data-slug="zeit-im-teig-mira"><span class="reihe">Du bist okay · 3–8</span>
         <span class="titel">Die Zeit im Teig</span>
         <span class="alter">Mira ist das schnellste Kind der Straße — und kommt nie an.</span>
-        <span class="kippe"><span class="muster">„Schnell, schnell.“</span><span class="gegen">„Manches wird nur mit Zeit fertig.“</span></span></article>
-      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="kippe"><span class="muster">„Schnell, schnell.“</span><span class="gegen">„Manches wird nur mit Zeit fertig.“</span></span><a class="aktion" href="#bestellen" data-bestellen="zeit-im-teig-mira">Bestellen · 16,90 €</a></article>
+      <article class="buch bald" data-slug="nimmerschluss"><span class="reihe">Du bist bereit · 6–9 · erscheint bald</span>
         <span class="titel">Der Nimmerschluss</span>
         <span class="alter">Aus „gleich“ werden vierzig Minuten. Jedes Mal.</span>
-        <span class="kippe"><span class="muster">„Nur noch eins.“</span><span class="gegen">„Ich darf selbst Schluss machen.“</span></span></article>
+        <span class="kippe"><span class="muster">„Nur noch eins.“</span><span class="gegen">„Ich darf selbst Schluss machen.“</span></span><a class="aktion" href="#bestellen" data-bestellen="nimmerschluss">Vormerken · kostet nichts</a></article>
     </div>
   </div>
 
   <div class="zeile">
     <div class="muster-label"><b>Muster 4</b> Alles allein tragen</div>
     <div class="paar">
-      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+      <article class="buch" data-slug="rucksack-frieda-hell"><span class="reihe">Du bist okay · 3–8</span>
         <span class="titel">Der unsichtbare Rucksack</span>
         <span class="alter">Frieda ist die Stärkste. Und sagt zu allem: macht nichts.</span>
-        <span class="kippe"><span class="muster">„Ist nicht schlimm.“</span><span class="gegen">„Geteilte Steine sind leichter.“</span></span></article>
-      <article class="buch"><span class="reihe">Du bist bereit · 6–9</span>
+        <span class="kippe"><span class="muster">„Ist nicht schlimm.“</span><span class="gegen">„Geteilte Steine sind leichter.“</span></span><a class="aktion" href="#bestellen" data-bestellen="rucksack-frieda-hell">Bestellen · 16,90 €</a></article>
+      <article class="buch bald" data-slug="maschinenfreund"><span class="reihe">Du bist bereit · 6–9 · erscheint bald</span>
         <span class="titel">Der Maschinenfreund</span>
         <span class="alter">Der bequemste Freund: immer Zeit, nie Streit.</span>
-        <span class="kippe"><span class="muster">„Der hört mir immer zu.“</span><span class="gegen">„Ich weiß, wen ich rufe.“</span></span></article>
+        <span class="kippe"><span class="muster">„Der hört mir immer zu.“</span><span class="gegen">„Ich weiß, wen ich rufe.“</span></span><a class="aktion" href="#bestellen" data-bestellen="maschinenfreund">Vormerken · kostet nichts</a></article>
     </div>
   </div>
 
   <div class="zeile">
     <div class="muster-label"><b>Muster 5</b> Leicht zählt nicht</div>
     <div class="paar">
-      <article class="buch"><span class="reihe">Du bist okay · 3–8</span>
+      <article class="buch" data-slug="drachen-und-wind"><span class="reihe">Du bist okay · 3–8</span>
         <span class="titel">Der Drachen und der Wind</span>
         <span class="alter">Juna baut den prächtigsten Drachen. Er steigt nicht.</span>
-        <span class="kippe"><span class="muster">„Nur was schwer ist, zählt.“</span><span class="gegen">„Es darf gelingen.“</span></span></article>
-      <article class="buch entwurf"><span class="reihe">Du bist bereit · 7–10 · in Arbeit</span>
+        <span class="kippe"><span class="muster">„Nur was schwer ist, zählt.“</span><span class="gegen">„Es darf gelingen.“</span></span><a class="aktion" href="#bestellen" data-bestellen="drachen-und-wind">Bestellen · 16,90 €</a></article>
+      <article class="buch bald" data-slug="zettelweg"><span class="reihe">Du bist bereit · 7–10 · erscheint bald</span>
         <span class="titel">Der Zettelweg</span>
         <span class="alter">Verabreden geht nur über Erwachsene. Findet das Kind.</span>
-        <span class="kippe"><span class="muster">„Das machen die Großen.“</span><span class="gegen">„Verabreden kannst du.“</span></span></article>
+        <span class="kippe"><span class="muster">„Das machen die Großen.“</span><span class="gegen">„Verabreden kannst du.“</span></span><a class="aktion" href="#bestellen" data-bestellen="zettelweg">Vormerken · kostet nichts</a></article>
     </div>
   </div>
 </div>
@@ -374,8 +435,9 @@ footer .klein,.check .klein{color:#bdb0a0}
     <h3>Eure Geschichte</h3>
     <p class="treffer" id="treffer-titel"></p>
     <p id="treffer-text"></p>
-    <p class="klein">Dieses Buch gibt es fertig — oder <strong>auf euer Kind zugeschnitten</strong>
-    mit Name, Aussehen und eurer Welt, für 5,00 € mehr. Beides über den Bestell-Code unten.</p>
+    <p class="preise" id="treffer-preise">Fertig für 16,90 € — oder <strong>auf euer Kind zugeschnitten</strong>
+    mit Name, Aussehen, eurer Welt und einer ersten Seite nur für euer Kind, für 5,00 € mehr.</p>
+    <p><a class="knopf" href="#bestellen" id="treffer-bestellen">Dieses Buch bestellen</a></p>
   </div>
 
   <p class="no-js-hinweis">Die sechs Fragen brauchen JavaScript. Ohne geht es genauso:
@@ -402,6 +464,9 @@ footer .klein,.check .klein{color:#bdb0a0}
       Alles per Auswahl, nichts hochgeladen.</p></div>
     <div class="schritt"><span class="nr">4</span><h3>Eure Welt</h3>
       <p class="klein">Stadt, Dorf oder Land — und wer im Buch die wichtigste Bezugsperson ist.</p></div>
+    <div class="schritt"><span class="nr">5</span><h3>Die erste Seite</h3>
+      <p class="klein">Ganz vorn, wo sonst die Widmung steht, begrüßt das Buch euer Kind — mit einem
+      Wort, das nur ihr über es sagt, und eurem Namen darunter.</p></div>
   </div>
   <p class="klein" style="margin-top:1.4rem;max-width:62ch">Alles davon ist freiwillig. Was ihr
   auslasst, entscheiden wir so, dass es zur Geschichte passt.</p>
@@ -412,17 +477,140 @@ footer .klein,.check .klein{color:#bdb0a0}
 <section class="bestellung" id="bestellen">
 <div class="spur">
   <h2>Bestellen</h2>
-  <p>Am Ende bekommt ihr einen <strong>Bestell-Code</strong> — eine Zeile, die alles enthält, was
-  wir brauchen. Den schickt ihr uns per Mail, aus eurem eigenen Programm.</p>
+  <p class="lead">Ein Buch, zwei Ausgaben. Alles, was ihr hier eintragt, bleibt auf eurem Gerät —
+  bis ihr am Ende den <strong>Bestell-Code</strong> selbst abschickt. Aus eurem Mail-Programm, oder
+  nach eurem Häkchen direkt an uns.</p>
+
+  <form id="bestellung" class="formular" novalidate autocomplete="off">
+
+    <fieldset class="feld">
+      <legend>Das Buch</legend>
+      <div class="f"><span>Welche Geschichte?</span>
+        <select id="b-buch">
+          <optgroup label="Du bist okay · 3–8 · lieferbar">
+            <option value="zeit-im-teig-mira">Die Zeit im Teig</option>
+            <option value="rucksack-frieda-hell">Der unsichtbare Rucksack</option>
+            <option value="licht-im-riss">Das Licht im Riss</option>
+            <option value="lieblingsfarbe">Die verschwundene Lieblingsfarbe</option>
+            <option value="drachen-und-wind">Der Drachen und der Wind</option>
+          </optgroup>
+          <optgroup label="Du bist bereit · erscheint bald · vormerken">
+            <option value="immerwisser">Der Immerwisser</option>
+            <option value="klingelstein">Der Klingelstein</option>
+            <option value="nimmerschluss">Der Nimmerschluss</option>
+            <option value="maschinenfreund">Der Maschinenfreund</option>
+            <option value="zettelweg">Der Zettelweg</option>
+          </optgroup>
+        </select></div>
+      <p class="klein" id="b-verfuegbar" style="margin:.8rem 0 0"></p>
+    </fieldset>
+
+    <fieldset class="feld" id="feld-ausgabe">
+      <legend>Die Ausgabe</legend>
+      <div class="ausgaben">
+        <label class="ausgabe"><input type="radio" name="ausgabe" value="fertig" checked>
+          <span class="t">Fertig</span><span class="preis">16,90 €</span>
+          <span class="klein">Die Geschichte, wie sie gedruckt ist — mit Mira, Frieda, Emil, Paula oder Juna.</span></label>
+        <label class="ausgabe"><input type="radio" name="ausgabe" value="zugeschnitten">
+          <span class="t">Auf euer Kind zugeschnitten</span><span class="preis">21,90 € <small style="font-weight:400">(+ 5,00 €)</small></span>
+          <span class="klein">Name, Aussehen und eure Welt in der Geschichte — und ganz vorn eine Seite,
+          die nur euer Kind bekommt.</span></label>
+      </div>
+      <p class="klein" style="margin:1rem 0 0">Versand und Lieferzeit stehen in unserer Antwort-Mail — jedes
+      zugeschnittene Buch wird einzeln gedruckt.</p>
+    </fieldset>
+
+    <div id="zuschnitt" class="zu">
+      <fieldset class="feld">
+        <legend>Euer Kind</legend>
+        <p class="hinweis">Alles hier ist freiwillig. Was ihr auslasst, entscheiden wir so, dass es zur Geschichte passt.</p>
+        <div class="reihe-2">
+          <div class="f"><span>Vorname</span><input type="text" id="k-name" maxlength="40" placeholder="Julia"></div>
+          <div class="f"><span>Aussprache-Hinweis (falls nötig)</span><input type="text" id="k-aussprache" maxlength="60" placeholder="z. B. „Dschulia“"></div>
+        </div>
+        <div class="f" style="margin-top:1rem"><span>Für wen ist das Buch?</span>
+          <div class="wahl" id="k-wer">
+            <label><input type="radio" name="wer" value="sie"> ein Mädchen</label>
+            <label><input type="radio" name="wer" value="er"> einen Jungen</label>
+            <label><input type="radio" name="wer" value="neutral" checked> geschlechterneutral</label>
+          </div></div>
+        <div class="f" style="margin-top:1rem"><span>Wer spielt die Hauptrolle?</span>
+          <div class="wahl" id="k-held">
+            <label><input type="radio" name="held" value="kind" checked> ein Kind wie eures</label>
+            <label><input type="radio" name="held" value="tier"> ein Tier</label>
+          </div></div>
+        <div class="reihe-2" id="k-aussehen" style="margin-top:1rem">
+          <div class="f"><span>Hautton</span><select id="k-hautton"><option value="">—</option><option>hell</option><option>mittel</option><option>dunkel</option><option>sehr dunkel</option></select></div>
+          <div class="f"><span>Haarfarbe</span><select id="k-haar"><option value="">—</option><option>blond</option><option>braun</option><option>schwarz</option><option>rot</option></select></div>
+          <div class="f"><span>Frisur</span><select id="k-frisur"><option value="">—</option><option>kurz</option><option>lockig</option><option>lang</option><option>Zöpfe</option></select></div>
+          <div class="f"><span>Brille</span><select id="k-brille"><option value="nein">nein</option><option value="ja">ja</option></select></div>
+          <div class="f"><span>Hörgerät</span><select id="k-hoergeraet"><option value="nein">nein</option><option value="ja">ja</option></select></div>
+          <div class="f"><span>Lieblingsfarbe (Kleidung)</span><input type="text" id="k-farbe" maxlength="30" placeholder="grün"></div>
+        </div>
+        <div class="reihe-2" id="k-tier" style="margin-top:1rem" hidden>
+          <div class="f"><span>Welches Tier?</span><select id="k-tierart"><option value="">—</option><option>kleiner Bär</option><option>kleiner Fuchs</option><option>kleine Füchsin</option><option>kleiner Hase</option><option>kleiner Waschbär</option></select></div>
+        </div>
+        <div class="reihe-2" style="margin-top:1rem">
+          <div class="f"><span>Wo spielt die Geschichte?</span><select id="k-setting"><option value="">—</option><option value="stadt">Stadt</option><option value="dorf">Dorf</option><option value="land">Land</option></select></div>
+          <div class="f"><span>Wichtigste Bezugsperson im Buch</span><input type="text" id="k-bezug" maxlength="40" placeholder="Mama, Papa, Oma, Opa …"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="feld">
+        <legend>Die erste Seite</legend>
+        <p class="hinweis">Ganz vorn, wo sonst die Widmung steht, begrüßt das Buch euer Kind. Zwei Lücken
+        füllt ihr — <strong>in euren Worten</strong>. Wir schreiben nichts um.</p>
+        <p class="luecke">… dass du dir deine kleine
+          <input type="text" id="w-merkmal" maxlength="40" placeholder="quirlige Art" aria-label="Merkmal eures Kindes, in eurem Wort"> behältst.</p>
+        <p class="luecke">Liebe Grüße,
+          <input type="text" id="w-schenker" maxlength="40" placeholder="deine Tante" aria-label="Wer schenkt das Buch"></p>
+        <div class="blatt-rahmen">
+          <p class="vorab">So sieht die Seite aus</p>
+          <div class="blatt" id="widmung-blatt" aria-live="polite">
+            <div class="strich"></div>
+            <p id="wb-1">Hallo <span class="leer">…</span>,</p>
+            <p id="wb-2">wir hoffen, dass du viel Spaß hast mit diesem Buch und dass du dir deine kleine <span class="leer">…</span> behältst.</p>
+            <p class="gruss" id="wb-3">Liebe Grüße, <span class="leer">…</span></p>
+            <div class="strich"></div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <fieldset class="feld">
+      <legend>Noch etwas?</legend>
+      <div class="f"><span>Was beschäftigt euer Kind gerade? (freiwillig)</span>
+        <textarea id="b-notiz" maxlength="600" placeholder="Einschulung, ein neues Geschwisterkind, ein Umzug …"></textarea></div>
+    </fieldset>
+
+    <fieldset class="feld">
+      <legend>Abschicken</legend>
+      <div class="f"><span>Eure E-Mail-Adresse — an sie geht unsere Antwort</span>
+        <input type="email" id="b-email" maxlength="120" placeholder="ihr@beispiel.de" autocomplete="email"></div>
+      <div class="f" style="margin-top:1rem"><span>Euer Bestell-Code</span>
+        <textarea class="code-box" id="b-code" readonly spellcheck="false">Der Bestell-Code entsteht hier, sobald ihr oben etwas ausgewählt habt. Ohne JavaScript: schreibt uns einfach, welches Buch und welche Ausgabe ihr möchtet.</textarea></div>
+      <label class="einwilligung"><input type="checkbox" id="b-einwilligung">
+        <span>Ja, ihr dürft den Bestell-Code (Buch, Ausgabe, Vorname des Kindes, Angaben zum Aussehen inkl. eventueller
+        Angaben zu Brille oder Hörgerät, den Text der ersten Seite, Freitext) zusammen mit unserer E-Mail-Adresse
+        über euren Übermittlungsdienst an jay@aivantum.com senden und zur Bearbeitung unserer Bestellung oder
+        Vormerkung verarbeiten. Diese Einwilligung können wir jederzeit widerrufen
+        (<a href="datenschutz.html#bestellung">Datenschutz, Abschnitt 4</a>). Ohne Häkchen bleibt der Weg über
+        euer eigenes Mail-Programm.</span></label>
+      <input class="honig" type="text" id="b-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="knoepfe">
+        <button type="button" class="knopf" id="b-senden" disabled>Direkt an uns senden</button>
+        <a class="knopf leise" id="b-mail" href="mailto:jay@aivantum.com?subject=Bestellung%20%C2%B7%20Du%20bist%20okay&amp;body=Hallo%2C%0A%0Awir%20m%C3%B6chten%20bestellen%20bzw.%20vormerken.%20Buch%3A%20%E2%80%A6%20Ausgabe%3A%20%E2%80%A6%0A%0AViele%20Gr%C3%BC%C3%9Fe">Per eigenem Mail-Programm</a>
+        <button type="button" class="knopf leise" id="b-kopieren">Code kopieren</button>
+      </div>
+      <p class="status" id="b-status" hidden></p>
+    </fieldset>
+  </form>
+
   <div class="zusicherung">
-    <p style="margin:0"><strong>Von dieser Seite geht nichts weg.</strong> Alles, was ihr hier
-    anklickt, bleibt auf eurem Gerät. Keine Cookies, kein Tracking, kein Konto. Erst wenn ihr die
-    Mail selbst abschickt, verlässt etwas euren Browser. Bei Fragen zu einem Kind ist das für uns
-    keine Fußnote.</p>
+    <p style="margin:0"><strong>Von dieser Seite geht nichts weg, bevor ihr es wollt.</strong> Keine Cookies, kein
+    Tracking, kein Konto. Der Bestell-Code enthält vom Check nur das Ergebnis, nie eure einzelnen Antworten.
+    Bei Fragen zu einem Kind ist das für uns keine Fußnote.</p>
   </div>
-  <p style="margin-top:1.6rem">
-    <a class="knopf" href="mailto:jay@aivantum.com?subject=Bestellung%20%C2%B7%20Du%20bist%20okay">Mail schreiben</a>
-  </p>
 </div>
 </section>
 
@@ -468,19 +656,19 @@ footer .klein,.check .klein{color:#bdb0a0}
   };
 
   var BUCH = {
-    "1a":["Das Licht im Riss","Emil will alles genau richtig machen — bis die Laterne einreißt und trotzdem leuchtet. Für Kinder, bei denen ein Fehler den ganzen Tag kippt."],
-    "1b":["Der Immerwisser","Die Maschine hat immer sofort eine Antwort. Das Buch zeigt, dass sie rät — und dass der eigene Kopf der Kapitän bleibt."],
-    "2a":["Die verschwundene Lieblingsfarbe","Paula sagt zu allem Ja, bis ihre Farbe verschwindet. Für Kinder, die es allen recht machen und dabei selbst leiser werden."],
-    "2b":["Der Klingelstein","Alle haben eins, nur eines nicht. Das Buch löst Zugehörigkeit vom Gerät — ohne das Gerät zu verteufeln."],
-    "3a":["Die Zeit im Teig","Mira ist das schnellste Kind der Straße und kommt nie an. Beim Teig lernt sie, dass manches nur mit Zeit fertig wird."],
-    "3b":["Der Nimmerschluss","Aus „gleich“ werden vierzig Minuten, und das Ende kommt immer von außen. Hier lernt das Kind, selbst Schluss zu machen."],
-    "4a":["Der unsichtbare Rucksack","Frieda trägt alles allein und sagt zu allem „macht nichts“. Bis sie sieht, dass sogar die stärkste Feuerwehrfrau um Hilfe ruft."],
-    "4b":["Der Maschinenfreund","Der bequemste Freund: immer Zeit, nie Streit. Das Buch nimmt das Gefühl ernst und fügt eine Unterscheidung hinzu."],
-    "5a":["Der Drachen und der Wind","Juna baut den prächtigsten Drachen, und er steigt nicht. Für Kinder, bei denen nur zählt, was anstrengend war."],
-    "5b":["Der Zettelweg","Verabreden geht nur über Erwachsene — findet das Kind. Bis es merkt, dass es das selbst kann. (Erscheint bald.)"]
+    "1a":["Das Licht im Riss","Emil will alles genau richtig machen — bis die Laterne einreißt und trotzdem leuchtet. Für Kinder, bei denen ein Fehler den ganzen Tag kippt.","licht-im-riss"],
+    "1b":["Der Immerwisser","Die Maschine hat immer sofort eine Antwort. Das Buch zeigt, dass sie rät — und dass der eigene Kopf der Kapitän bleibt.","immerwisser"],
+    "2a":["Die verschwundene Lieblingsfarbe","Paula sagt zu allem Ja, bis ihre Farbe verschwindet. Für Kinder, die es allen recht machen und dabei selbst leiser werden.","lieblingsfarbe"],
+    "2b":["Der Klingelstein","Alle haben eins, nur eines nicht. Das Buch löst Zugehörigkeit vom Gerät — ohne das Gerät zu verteufeln.","klingelstein"],
+    "3a":["Die Zeit im Teig","Mira ist das schnellste Kind der Straße und kommt nie an. Beim Teig lernt sie, dass manches nur mit Zeit fertig wird.","zeit-im-teig-mira"],
+    "3b":["Der Nimmerschluss","Aus „gleich“ werden vierzig Minuten, und das Ende kommt immer von außen. Hier lernt das Kind, selbst Schluss zu machen.","nimmerschluss"],
+    "4a":["Der unsichtbare Rucksack","Frieda trägt alles allein und sagt zu allem „macht nichts“. Bis sie sieht, dass sogar die stärkste Feuerwehrfrau um Hilfe ruft.","rucksack-frieda-hell"],
+    "4b":["Der Maschinenfreund","Der bequemste Freund: immer Zeit, nie Streit. Das Buch nimmt das Gefühl ernst und fügt eine Unterscheidung hinzu.","maschinenfreund"],
+    "5a":["Der Drachen und der Wind","Juna baut den prächtigsten Drachen, und er steigt nicht. Für Kinder, bei denen nur zählt, was anstrengend war.","drachen-und-wind"],
+    "5b":["Der Zettelweg","Verabreden geht nur über Erwachsene — findet das Kind. Bis es merkt, dass es das selbst kann.","zettelweg"]
   };
 
-  var antw = {}, ort = null;
+  var antw = {}, ort = null, wer = null;
 
   function knopf(text, wert, gruppe, cb){
     var b = document.createElement("button");
@@ -497,10 +685,14 @@ footer .klein,.check .klein{color:#bdb0a0}
   var g0 = document.querySelector("#frage0 .skala");
   WER.forEach(function(w){
     g0.appendChild(knopf(w[0], w[1], g0, function(v){
+      wer = v;
       var texte = FRAGEN[v] || FRAGEN.neutral;
       document.querySelectorAll("#fragen .frage[data-muster] .txt").forEach(function(el, i){
         if (texte[i]) el.textContent = texte[i];
       });
+      // Die Anrede wandert mit ins Bestellformular — einmal gesagt reicht.
+      var r = document.querySelector('#k-wer input[value="' + v + '"]');
+      if (r){ r.checked = true; baueCode(); }
     }));
   });
 
@@ -514,22 +706,188 @@ footer .klein,.check .klein{color:#bdb0a0}
     }
   });
 
+  var treffer = null;   // {muster, ort, slug}
+
   function rechne(){
     var muster = Object.keys(antw);
     if (muster.length < 5 || !ort) return;
     var best = null, hoch = -1;
     muster.forEach(function(m){ if (antw[m] > hoch){ hoch = antw[m]; best = m; } });
-    if (hoch === 0){ zeige("Klingt nach einem entspannten Kind.",
-      "Bei keinem der fünf Muster habt ihr „oft“ oder „manchmal“ gesagt. Dann sucht euch oben einfach die Geschichte aus, die euch am meisten anspricht — das ist völlig in Ordnung."); return; }
+    if (hoch === 0){ treffer = null; zeige("Klingt nach einem entspannten Kind.",
+      "Bei keinem der fünf Muster habt ihr „oft“ oder „manchmal“ gesagt. Dann sucht euch oben einfach die Geschichte aus, die euch am meisten anspricht — das ist völlig in Ordnung.", null); return; }
     var b = BUCH[best + ort];
-    zeige(b[0], b[1]);
+    treffer = { muster: best, ort: ort, slug: b[2] };
+    zeige(b[0], b[1], b[2]);
   }
 
-  function zeige(titel, text){
+  function zeige(titel, text, slug){
     var box = document.getElementById("ergebnis");
     document.getElementById("treffer-titel").textContent = titel;
     document.getElementById("treffer-text").textContent = text;
+    var kn = document.getElementById("treffer-bestellen"), pr = document.getElementById("treffer-preise");
+    var info = slug ? BUECHER[slug] : null;
+    kn.hidden = !slug; pr.hidden = !slug;
+    if (info){
+      kn.textContent = info.lieferbar ? "Dieses Buch bestellen" : "Dieses Buch vormerken";
+      pr.innerHTML = info.lieferbar
+        ? 'Fertig für 16,90 € — oder <strong>auf euer Kind zugeschnitten</strong> mit Name, Aussehen, eurer Welt und einer ersten Seite nur für euer Kind, für 5,00 € mehr.'
+        : 'Dieses Buch erscheint bald. Merkt es vor — das kostet nichts, wir melden uns, sobald es da ist.';
+      kn.onclick = function(){ waehleBuch(slug); };
+    }
     box.hidden = false;
+  }
+
+  // ---------- Bestellung ----------
+  var BUECHER = {
+    "zeit-im-teig-mira":    {titel:"Die Zeit im Teig", reihe:"Du bist okay", lieferbar:true},
+    "rucksack-frieda-hell": {titel:"Der unsichtbare Rucksack", reihe:"Du bist okay", lieferbar:true},
+    "licht-im-riss":        {titel:"Das Licht im Riss", reihe:"Du bist okay", lieferbar:true},
+    "lieblingsfarbe":       {titel:"Die verschwundene Lieblingsfarbe", reihe:"Du bist okay", lieferbar:true},
+    "drachen-und-wind":     {titel:"Der Drachen und der Wind", reihe:"Du bist okay", lieferbar:true},
+    "immerwisser":          {titel:"Der Immerwisser", reihe:"Du bist bereit", lieferbar:false},
+    "klingelstein":         {titel:"Der Klingelstein", reihe:"Du bist bereit", lieferbar:false},
+    "nimmerschluss":        {titel:"Der Nimmerschluss", reihe:"Du bist bereit", lieferbar:false},
+    "maschinenfreund":      {titel:"Der Maschinenfreund", reihe:"Du bist bereit", lieferbar:false},
+    "zettelweg":            {titel:"Der Zettelweg", reihe:"Du bist bereit", lieferbar:false}
+  };
+  var PREIS = { fertig: 16.9, zugeschnitten: 21.9 };
+
+  function $(id){ return document.getElementById(id); }
+  function val(id){ var el = $(id); return el ? (el.value || "").trim() : ""; }
+  function radio(name){ var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : null; }
+
+  // Der kanonische Gruss — Wort fuer Wort wie in der Druck-Vorlage (kdp/widmung.py).
+  function anredeZeile(anr, name){
+    var n = name || "…";
+    return "Hallo " + (anr === "sie" ? "liebe " : anr === "er" ? "lieber " : "") + n + ",";
+  }
+  function widmungText(anr, name, merkmal, schenker){
+    return anredeZeile(anr, name) + "\n" +
+      "wir hoffen, dass du viel Spaß hast mit diesem Buch und dass du dir deine kleine " + (merkmal || "…") + " behältst." + "\n" +
+      "Liebe Grüße, " + (schenker || "…");
+  }
+  function leerOderText(el, text, leer){
+    el.textContent = ""; 
+    if (leer){ var s = document.createElement("span"); s.className = "leer"; s.textContent = "…"; return s; }
+    return document.createTextNode(text);
+  }
+  function maleBlatt(){
+    var anr = radio("wer") || "neutral", name = val("k-name"), merk = val("w-merkmal"), sch = val("w-schenker");
+    var p1 = $("wb-1"), p2 = $("wb-2"), p3 = $("wb-3");
+    p1.textContent = "Hallo " + (anr === "sie" ? "liebe " : anr === "er" ? "lieber " : "");
+    p1.appendChild(leerOderText(document.createElement("i"), name, !name)); p1.appendChild(document.createTextNode(","));
+    p2.textContent = "wir hoffen, dass du viel Spaß hast mit diesem Buch und dass du dir deine kleine ";
+    p2.appendChild(leerOderText(document.createElement("i"), merk, !merk)); p2.appendChild(document.createTextNode(" behältst."));
+    p3.textContent = "Liebe Grüße, ";
+    p3.appendChild(leerOderText(document.createElement("i"), sch, !sch));
+  }
+
+  function waehleBuch(slug){
+    var sel = $("b-buch"); if (!sel) return;
+    sel.value = slug; aktualisiereBuch();
+    $("bestellen").scrollIntoView({ behavior: "smooth" });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-bestellen]"), function(a){
+    a.addEventListener("click", function(){ waehleBuch(a.getAttribute("data-bestellen")); });
+  });
+
+  function aktualisiereBuch(){
+    var slug = val("b-buch"), info = BUECHER[slug] || {};
+    var v = $("b-verfuegbar"), fa = $("feld-ausgabe");
+    if (info.lieferbar){
+      v.textContent = "Lieferbar — Reihe " + info.reihe + ", für Kinder von 3 bis 8.";
+      fa.hidden = false;
+    } else {
+      v.textContent = "Dieses Buch erscheint bald. Ihr merkt es vor — das kostet nichts, wir melden uns, sobald es da ist.";
+      fa.hidden = true;
+    }
+    aktualisiereAusgabe();
+  }
+  function aktualisiereAusgabe(){
+    var slug = val("b-buch"), info = BUECHER[slug] || {};
+    var zu = info.lieferbar && radio("ausgabe") === "zugeschnitten";
+    $("zuschnitt").classList.toggle("zu", !zu);
+    baueCode();
+  }
+  function aktualisiereHeld(){
+    var tier = radio("held") === "tier";
+    $("k-tier").hidden = !tier;
+    $("k-aussehen").hidden = tier;
+    baueCode();
+  }
+
+  function baueCode(){
+    maleBlatt();
+    var slug = val("b-buch"), info = BUECHER[slug]; if (!info) return;
+    var ausgabe = info.lieferbar ? radio("ausgabe") : "vormerkung";
+    var zu = ausgabe === "zugeschnitten";
+    var anr = radio("wer") || "neutral", name = val("k-name");
+    var tier = radio("held") === "tier";
+    var code = {
+      schema: "okay-bestellung-v2",
+      erstellt: new Date().toISOString(),
+      buch: { slug: slug, titel: info.titel, reihe: info.reihe, lieferbar: info.lieferbar },
+      ausgabe: ausgabe,
+      preis_eur: info.lieferbar ? PREIS[ausgabe] : null,
+      check: treffer ? { muster: treffer.muster, ort: treffer.ort } : null,
+      kind: { name: zu ? name : null, anrede: anr, aussprache: zu ? (val("k-aussprache") || null) : null },
+      widmung: zu ? { merkmal: val("w-merkmal"), schenker: val("w-schenker"),
+                      text: widmungText(anr, name, val("w-merkmal"), val("w-schenker")) } : null,
+      aussehen: zu ? { held: tier ? "tier" : "kind", tierart: tier ? (val("k-tierart") || null) : null,
+                       hautton: tier ? null : (val("k-hautton") || null), haarfarbe: tier ? null : (val("k-haar") || null),
+                       frisur: tier ? null : (val("k-frisur") || null), brille: !tier && val("k-brille") === "ja",
+                       hoergeraet: !tier && val("k-hoergeraet") === "ja", lieblingsfarbe: tier ? null : (val("k-farbe") || null) } : null,
+      welt: zu ? { setting: val("k-setting") || null, bezugsperson: val("k-bezug") || null } : null,
+      beschaeftigt_gerade: val("b-notiz") || null,
+      kontakt: { email: val("b-email") || null }
+    };
+    var text = JSON.stringify(code, null, 2);
+    $("b-code").value = text;
+    $("b-mail").href = "mailto:jay@aivantum.com?subject=" + encodeURIComponent("Bestellung · Du bist okay") +
+      "&body=" + encodeURIComponent("Hallo,\n\nwir möchten " + (ausgabe === "vormerkung" ? "vormerken" : "bestellen") +
+      ". Hier ist unser Bestell-Code:\n\n" + text + "\n\nViele Grüße");
+    return text;
+  }
+
+  // Formular verdrahten
+  var form = $("bestellung");
+  if (form){
+    $("b-buch").addEventListener("change", aktualisiereBuch);
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="ausgabe"]'), function(r){ r.addEventListener("change", aktualisiereAusgabe); });
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="held"]'), function(r){ r.addEventListener("change", aktualisiereHeld); });
+    form.addEventListener("input", baueCode);
+    form.addEventListener("change", baueCode);
+    form.addEventListener("submit", function(e){ e.preventDefault(); });
+    aktualisiereHeld(); aktualisiereBuch();
+
+    var consent = $("b-einwilligung"), sendBtn = $("b-senden"), status = $("b-status");
+    consent.addEventListener("change", function(){ sendBtn.disabled = !consent.checked; });
+    function melde(msg, ok){ status.hidden = false; status.textContent = msg; status.className = "status " + (ok ? "ok" : "nein"); }
+
+    sendBtn.addEventListener("click", function(){
+      var email = val("b-email");
+      if (!consent.checked){ melde("Bitte setzt zuerst das Häkchen zur Einwilligung — oder nutzt den Weg über euer eigenes Mail-Programm.", false); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ melde("Bitte gebt eine gültige E-Mail-Adresse ein — an sie schicken wir die Antwort.", false); return; }
+      var slug = val("b-buch"), info = BUECHER[slug] || {};
+      if (info.lieferbar && radio("ausgabe") === "zugeschnitten" && !val("k-name")){ melde("Für die zugeschnittene Ausgabe brauchen wir den Vornamen eures Kindes.", false); return; }
+      var code = baueCode();
+      sendBtn.disabled = true; sendBtn.textContent = "Wird gesendet …";
+      fetch("https://aivantum-check.aivantum.workers.dev/kontakt", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ art: "tomodachi", email: email, code: code, einwilligung: true,
+          einwilligung_zeit: new Date().toISOString(), source: location.host + location.pathname, website: val("b-website") })
+      }).then(function(r){
+        if (r.ok){ sendBtn.textContent = "Gesendet ✓"; melde("Angekommen! Eine Bestätigung ist unterwegs an " + email + ". Wir melden uns persönlich bei euch.", true); }
+        else { sendBtn.disabled = false; sendBtn.textContent = "Direkt an uns senden"; melde("Das hat gerade nicht geklappt. Nutzt bitte den Weg über euer Mail-Programm oder kopiert den Code.", false); }
+      }).catch(function(){ sendBtn.disabled = false; sendBtn.textContent = "Direkt an uns senden"; melde("Keine Verbindung. Nutzt bitte den Weg über euer Mail-Programm oder kopiert den Code.", false); });
+    });
+
+    $("b-kopieren").addEventListener("click", function(){
+      var ta = $("b-code"), btn = this;
+      function done(){ btn.textContent = "Kopiert ✓"; setTimeout(function(){ btn.textContent = "Code kopieren"; }, 2200); }
+      if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(ta.value).then(done, function(){ ta.select(); document.execCommand("copy"); done(); }); }
+      else { ta.select(); document.execCommand("copy"); done(); }
+    });
   }
 
   // Das Motiv im Hero einmal ausführen, sobald es im Blick ist.
